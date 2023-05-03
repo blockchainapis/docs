@@ -1,9 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
-import EasyImg from '@site/static/img/index/easy.png';
-import FastImg from '@site/static/img/index/fast.png';
-import AffordableImg from '@site/static/img/index/affordable.png';
 
 type FeatureItem = {
   title: string;
@@ -14,7 +11,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Easy',
-    Img: EasyImg,
+    Img: "img/index/easy.png",
     description: (
       <>
         Our API makes it easy to access liquidity pool data.
@@ -23,7 +20,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Fast',
-    Img: FastImg,
+    Img: "img/index/fast.png",
     description: (
       <>
         Less than 2ms processing time and 1000+ requests per second.
@@ -32,7 +29,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Affordable',
-    Img: AffordableImg,
+    Img: "img/index/affordable.png",
     description: (
       <>
         Pay only for what you use with our <a href='https://www.blockchainapis.io/pricing.html' target='_blank'>on-demand plan</a>.
