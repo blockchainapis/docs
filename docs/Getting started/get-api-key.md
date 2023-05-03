@@ -6,5 +6,5 @@ sidebar_position: 2
 
 # Get Your API Key
 
-You can use Blockchain APIs without an API key, however, without an API key,
-you are heavily limited.
+You can use Blockchain APIs without an API key, but, without an API key, you will get limited.
+You can get an API key for free at: https://dashboard.blockchainapis.io/register
