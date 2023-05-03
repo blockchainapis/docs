@@ -38,4 +38,24 @@ import CodeBlock from "@theme/CodeBlock";
 
 ## Step 2
 
+Create the Blockchain APIs instance:
 
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py
+def hello_world():
+  print("Hello, world!")
+```
+
+</TabItem>
+<TabItem value="javascript" label="JavaScript">
+
+```js
+function helloWorld() {
+  console.log('Hello, world!');
+}
+```
+
+</TabItem>
+</Tabs>

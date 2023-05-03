@@ -126,6 +126,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.blockchainapis.io/" target="_blank">Blockchain APIs</a>`,
       },
       prism: {
+        additionalLanguages: ['powershell'],
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
