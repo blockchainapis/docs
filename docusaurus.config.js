@@ -52,7 +52,7 @@ const config = {
             'https://github.com/blockchainapis/docs',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/tranquil-blue.css'),
         },
       }),
     ],
