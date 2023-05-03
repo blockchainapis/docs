@@ -10,32 +10,29 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Easy',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Our API makes it easy to access liquidity pool data.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Fast',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Beat the concurrence with less than 2ms processing time and 1000+ requests per second.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Affordable',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Pay only for what you use with our <a href='https://www.blockchainapis.io/pricing.html' target='_blank'>on-demand plan</a>.
       </>
     ),
   },

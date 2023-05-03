@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Blockchain APIs',
-  tagline: 'Fast, easy, and affordable DeFi data access across many blockchains. Take a look at tokens, liquidity pools, and exchange rates with our API.',
+  tagline: 'Fast and easy DeFi data access across many blockchains. Take a look at tokens, liquidity pools, and exchange rates with our API.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
