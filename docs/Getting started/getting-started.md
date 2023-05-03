@@ -13,6 +13,8 @@ keywords:
 
 # Quickstart
 
+Learn how to get the current price of Ethereum using Blockchain APIs.
+
 ## Step 1
 
 Get the SDK for your favorite language:
@@ -21,7 +23,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 
-<Tabs>
+<Tabs groupId="programming-language">
     <TabItem value="python" label="Python" default>
         <CodeBlock language="shell">
             {`pip install blockchain-apis`}
@@ -33,3 +35,7 @@ import CodeBlock from "@theme/CodeBlock";
         </CodeBlock>
     </TabItem>
 </Tabs>
+
+## Step 2
+
+
