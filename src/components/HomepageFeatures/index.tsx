@@ -1,17 +1,20 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
+import EasyImg from '@site/static/img/index/easy.png';
+import FastImg from '@site/static/img/index/fast.png';
+import AffordableImg from '@site/static/img/index/affordable.png';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  Img: string;
   description: JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to start',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Easy',
+    Img: EasyImg,
     description: (
       <>
         Our API makes it easy to access liquidity pool data.
@@ -20,7 +23,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Fast',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Img: FastImg,
     description: (
       <>
         Less than 2ms processing time and 1000+ requests per second.
@@ -29,7 +32,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Affordable',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Img: AffordableImg,
     description: (
       <>
         Pay only for what you use with our <a href='https://www.blockchainapis.io/pricing.html' target='_blank'>on-demand plan</a>.
@@ -38,11 +41,11 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, Img, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <img src={Img} alt={title} className={styles.featureSvg} />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
