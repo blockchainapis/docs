@@ -23,7 +23,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 
-<Tabs groupId="programming-language">
+<Tabs groupId="programming-language" queryString>
     <TabItem value="python" label="Python" default>
         <CodeBlock language="shell">
             {`pip install blockchain-apis`}
