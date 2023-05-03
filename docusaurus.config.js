@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Blockchain APIs',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Learn how to use our powerful endpoints to interact with ',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -123,7 +123,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Blockchain APIs`,
+        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.blockchainapis.io/" target="_blank">Blockchain APIs</a>`,
       },
       prism: {
         theme: lightCodeTheme,
