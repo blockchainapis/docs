@@ -47,6 +47,22 @@ Create the Blockchain APIs instance:
 def hello_world():
   print("Hello, world!")
 ```
+:::success
+This solution works, but for better performance, you can use [Python-Async](?programming-language=async-python)
+:::
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py
+import asyncio
+
+async def get_amount_out(blockchain: str, token0: str, token1: str, amountIn: int):
+    async with BlockchainApi(API_KEY) as blockchain_api:
+        return await blockchain_api.get_amount_out(blockchain, token0, token1, amountIn)
+
+asyncio.run(get_amount_out(...))
+```
 
 </TabItem>
 <TabItem value="javascript" label="JavaScript">
