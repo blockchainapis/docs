@@ -78,6 +78,18 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
+            type: "dropdown",
+            label: "SDK references",
+            position: "right",
+            items: [
+              {
+                label: "Python SDK",
+                type: "doc",
+                docId: "python-sdk/blockchain-apis"
+              }
+            ]
+          },
+          {
             href: 'https://github.com/blockchainapis',
             label: 'GitHub',
             position: 'right',
@@ -91,7 +103,7 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Getting started',
                 to: '/docs/intro',
               },
             ],
