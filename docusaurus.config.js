@@ -84,8 +84,8 @@ const config = {
             items: [
               {
                 label: "Python SDK",
-                type: "doc",
-                docId: "python-sdk/blockchain-apis"
+                type: "docSidebar",
+                sidebarId: "pythonSDKSidebar"
               }
             ]
           },
