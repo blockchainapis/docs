@@ -1,0 +1,67 @@
+---
+title: AmountIn
+description: The AmountIn model
+keywords:
+- Python
+- Blockchains
+- Ethereum
+- AmountIn
+- Rate
+---
+
+```python
+@dataclass(slots=True, frozen=True)
+class AmountIn:
+    blockchain: str
+    exchange: str
+    tokenIn: str
+    tokenOut: str
+    amountIn: int
+    amountOut: int
+```
+
+The AmountIn model
+
+## Attributes
+
+### blockchain
+
+The id of blockchain on which the exchange is taking place
+
+- type: `str`
+- example: `avalanche`
+
+### exchange
+
+The id of the exchange used for this trade
+
+- type: `str`
+- example: `lydia_finance_avalanche`
+
+### tokenIn
+
+The address of the token that you sell
+
+- type: `str`
+- example: `0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7`
+
+### tokenOut
+
+The address of the token that you buy
+
+- type: `str`
+- example: `0xde3A24028580884448a5397872046a019649b084`
+
+### amountIn
+
+The amount of tokenIn that you have to sell in order to get amountOut tokenOut
+
+- type: `int`
+- example: `843047442340946`
+
+### amountOut
+
+The amount of tokenOut that you wish to buy
+
+- type: `int`
+- example: `10000`

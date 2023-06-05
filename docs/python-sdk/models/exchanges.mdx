@@ -1,0 +1,70 @@
+---
+title: Exchanges
+description: The Exchanges model
+keywords:
+- Python
+- Blockchains
+- Ethereum
+- AmountIn
+- Exchanges
+- UniswapV2
+- Sushiswap
+- Pancakeswap
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```python
+@dataclass(slots=True, frozen=True)
+class Exchanges:
+    page: int
+    total_pages: int
+    data: List[Exchange]
+```
+
+## Attributes
+
+### page
+
+The page returned by the request
+
+- type: `int`
+- example: `1`
+
+### total_pages
+
+The total amount of pages available
+
+- type: `int`
+- example: `42`
+
+### data
+
+The list of exchanges
+
+#### type
+
+<CodeBlock language="python">
+    List[<a href="/">Exchange</a>]
+</CodeBlock>
+
+#### Example
+
+```json
+[
+    {
+        "exchange": "lydia_finance_avalanche",
+        "blockchain": "avalanche",
+        "name": "Lydia Finance",
+        "url": "https://exchange.lydia.finance/#/swap",
+        "fee": 200
+    },
+    {
+        "exchange": "oliveswap_avalanche",
+        "blockchain": "avalanche",
+        "name": "Oliveswap",
+        "url": "https://avax.olive.cash/",
+        "fee": 250
+    }
+]
+```
