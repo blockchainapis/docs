@@ -1,5 +1,5 @@
 ---
-title: amount_out
+title: amount_out_2
 description: Get the amount of token1 that you will get after selling amountIn token0
 keywords:
 - Python
@@ -61,6 +61,28 @@ asyncio.run(print_amount_out())
 
 ## Parameters
 
+- [blockchain](#blockchain): The id of the blockchain on which this exchange take place
+- [tokenIn](#tokenin): The address of the token that you sell
+- [tokenOut](#tokenout): The address of the token that you buy
+- [amountIn](#amountin): The amount of token0 that you sell
+- [exchange](#exchange): The exchange on which you want to do the trade, defaults to None
+
+## Returns
+
+<CodeBlock language="python">
+    List[<a href="/">AmountOut</a>]
+</CodeBlock>
+
+The list of the amount out that you will get on all of the exchanges. It can return an empty list if the given pair was not found for the given parameters.
+
+## Exceptions
+
+- [BlockchainNotSupportedException](/BlockchainNotSUpportedException): When an invalid blockchain id is given
+- [ExchangeNotSupportedException](/ExchangeNotSupportedException): When an invalid exchange id is given
+- [PairNotFoundException](/PairNotFoundException): When a pair is not found for the given blockchain or exchange
+
+## Parameters detailed
+
 ### blockchain
 
 The id of the blockchain on which this exchange take place
@@ -97,17 +119,3 @@ _This parameter is optional_
 
 - type: `str, Optional`
 - example: `uniswapv2`
-
-## Returns
-
-<CodeBlock language="python">
-    List[<a href="/">AmountOut</a>]
-</CodeBlock>
-
-The list of the amount out that you will get on all of the exchanges. It can return an empty list if the given pair was not found for the given parameters.
-
-## Exceptions
-
-- [BlockchainNotSupportedException](/BlockchainNotSUpportedException): When an invalid blockchain id is given
-- [ExchangeNotSupportedException](/ExchangeNotSupportedException): When an invalid exchange id is given
-- [PairNotFoundException](/PairNotFoundException): When a pair is not found for the given blockchain or exchange
