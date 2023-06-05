@@ -1,0 +1,38 @@
+---
+title: exchanges
+description: Get the list of supported exchanges by the API
+keywords:
+- Python
+- Exchanges
+- Ethereum
+- UniswapV2
+- Sushiswap
+- Pancakeswap
+---
+
+```py
+async def exchanges(self, page: int = 1, blockchain: str | None = None) -> Exchanges:
+```
+
+Get the list of supported exchanges by the API
+
+## Parameters
+
+### page
+
+You can ignore this value for this version of the API, defaults to 1
+
+Type: `int`  
+Example: `1`
+
+### blockchain
+
+The blockchain from which you want to get the exchanges, defaults to None
+
+Type: `str`  
+Example: `ethereum`
+
+### Parameters
+
+- `page`: You can ignore this value for this version of the API, defaults to 1
+- `blockchain`: The blockchain from which you want to get the exchanges, defaults to None

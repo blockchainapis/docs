@@ -7,11 +7,15 @@ keywords:
 - Ethereum
 ---
 
-# blockchains
+import CodeBlock from '@theme/CodeBlock';
+
+<CodeBlock language="python">
+    async def blockchains(self) -> List[Blockchain]:
+</CodeBlock>
 
 Get the list of blockchains supported by the API.
 
-## Example call
+### Example call
 
 ```py
 import asyncio
@@ -34,7 +38,9 @@ Using this method, you can find the id that you can use for other function calls
 
 ### Return type
 
-List\[[Blockchain](https://api.blockchainapis.io)\]
+<CodeBlock language="python">
+    List[<a href="/">Blockchain</a>]
+</CodeBlock>
 
 ### Example response
 
