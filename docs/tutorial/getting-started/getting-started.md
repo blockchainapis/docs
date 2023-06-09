@@ -15,6 +15,8 @@ keywords:
 
 Learn how to get the current price of Ethereum using Blockchain APIs.
 
+If you are just interested in the code, you can get it [here](https://github.com/blockchainapis/blockchain-apis-python-example/blob/master/src/async/get_eth_price.py)
+
 ## Step 1
 
 Get the SDK for your favorite language:
@@ -29,11 +31,6 @@ import CodeBlock from "@theme/CodeBlock";
             {`pip install blockchain-apis`}
         </CodeBlock>
     </TabItem>
-    <TabItem value="javascript" label="JavaScript">
-        <CodeBlock language="shell">
-            {`npm install blockchain-apis`}
-        </CodeBlock>
-    </TabItem>
 </Tabs>
 
 ## Step 2
@@ -44,8 +41,7 @@ Create the Blockchain APIs instance:
 <TabItem value="python" label="Python">
 
 ```py
-def hello_world():
-  print("Hello, world!")
+
 ```
 :::success
 This solution works, but for better performance, you can use [Python-Async](?programming-language=async-python)
