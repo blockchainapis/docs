@@ -1,0 +1,47 @@
+---
+title: Exchange
+description: The Exchange model
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+@dataclass(slots=True, frozen=True)
+class Exchange
+    exchange: str
+    blockchain: str
+    name: str
+    url: str
+```
+
+The Exchange model
+## Attributes
+
+### exchange
+
+The exchange unique id that should be put in other calls
+- type: `str`
+- example: ` "lydia_finance_avalanche"
+    `
+
+### blockchain
+
+The blockchain on which the exchange is done
+- type: `str`
+- example: ` "avalanche"
+    `
+
+### name
+
+The name of the exchange
+- type: `str`
+- example: ` "Lydia Finance"
+    `
+
+### url
+
+The url to the exchange
+- type: `str`
+- example: ` "https://exchange.lydia.finance/#/swap"
+    `
+

@@ -1,0 +1,72 @@
+---
+title: decimals
+description: Get the decimals of the given token
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+def decimals(self, blockchain: str, token: str) -> int:
+```
+Get the decimals of the given token
+
+## Parameters
+
+ - [blockchain](#blockchain): The id of the blockchain of the token
+ - [token](#token): The address of the token that you want to get the decimals from
+
+## Returns
+
+<CodeBlock language="python">
+    <a href="/docs/python-sdk/models/int">int</a>
+</CodeBlock>
+
+The decimals of the specific token
+## Example
+
+### Usage
+
+```py
+import asyncio
+
+from BlockchainAPIsSync import BlockchainAPIsSync
+
+async def print_decimals():
+    # Create the BlockchainAPIsSync instance
+    # You can additionaly add an API key if you want
+    blockchain_apis_sync = BlockchainAPIsSync()
+    # Get the decimals of the given token
+    decimals = await blockchain_apis_sync.decimals(
+        blockchain="ethereum"
+        token="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    )
+    print(decimals)
+    # We need to close our instance once we are done with BlockchainAPIs
+    await BlockchainAPIsSync.close()
+
+asyncio.run(print_decimals())
+```
+
+### Example response
+
+
+```json
+16
+```
+## Exceptions
+
+- [HTTPValidationError](/docs/python-sdk/exceptions/HTTPValidationError): Validation Error
+
+## Parameters detailed
+### blockchain
+
+The id of the blockchain of the token
+- type: `str`
+- example: `ethereum`
+
+### token
+
+The address of the token that you want to get the decimals from
+- type: `str`
+- example: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
+

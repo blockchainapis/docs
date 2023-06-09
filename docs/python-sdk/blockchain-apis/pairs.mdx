@@ -1,0 +1,107 @@
+---
+title: pairs
+description: Get the list of pairs supported by the API
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+async def pairs(self, page: int=1, blockchain: str | None=None, exchange: str | None=None) -> Pairs:
+```
+Get the list of pairs supported by the API
+
+## Parameters
+
+ - [page](#page): Each request has a maximum of 100 results separated by page, defaults to 1
+ - [blockchain](#blockchain): The blockchain from which you want to get the pairs, defaults to None
+ - [exchange](#exchange): The exchange from which you want to get the pairs, defaults to None
+
+## Returns
+
+<CodeBlock language="python">
+    <a href="/docs/python-sdk/models/Pairs">Pairs</a>
+</CodeBlock>
+
+The list of pairs supported by the API. It returns token addresses,
+blockchain, exchange and the fee that the pair has.
+
+The fee may vary depending on the exchange used.
+
+
+## Example
+
+### Usage
+
+```py
+import asyncio
+
+from BlockchainAPIs import BlockchainAPIs
+
+async def print_pairs():
+    # Create the BlockchainAPIs instance
+    # You can additionaly add an API key if you want
+    blockchain_apis = BlockchainAPIs()
+    # Get the list of pairs supported by the API
+    pairs = await blockchain_apis.pairs(
+        page=1
+        blockchain=ethereum
+        exchange=uniswapv2_ethereum
+    )
+    print(pairs)
+    # We need to close our instance once we are done with BlockchainAPIs
+    await BlockchainAPIs.close()
+
+asyncio.run(print_pairs())
+```
+
+### Example response
+
+
+```json
+{
+    "page": 1,
+    "total_pages": 1804,
+    "data": [
+        {
+            "blockchain": "ethereum",
+            "exchange": "uniswapv2_ethereum",
+            "token0": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "token1": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "fee": 300
+        },
+        {
+            "blockchain": "ethereum",
+            "exchange": "uniswapv2_ethereum",
+            "token0": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
+            "token1": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "fee": 300
+        }
+    ]
+}
+
+```
+## Exceptions
+
+- [BlockchainNotSupportedException](/docs/python-sdk/exceptions/BlockchainNotSupportedException): When an invalid blockchain id is given
+- [ExchangeNotSupportedException](/docs/python-sdk/exceptions/ExchangeNotSupportedException): When an invalid Exchange id is given
+- [InvalidPageException](/docs/python-sdk/exceptions/InvalidPageException): When you give an invalid page number
+
+## Parameters detailed
+### page
+
+Each request has a maximum of 100 results separated by page, defaults to 1
+- type: `int, Optional`
+- example: `1`
+
+### blockchain
+
+The blockchain from which you want to get the pairs, defaults to None
+- type: `str, Optional`
+- example: `ethereum`
+
+### exchange
+
+The exchange from which you want to get the pairs, defaults to None
+- type: `str, Optional`
+- example: `uniswapv2_ethereum`
+

@@ -1,0 +1,128 @@
+---
+title: tokens
+description: Get the list of supported tokens
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+def tokens(self, page: int=1, blockchain: str | None=None) -> Tokens:
+```
+Get the list of supported tokens
+
+## Parameters
+
+ - [page](#page): Each request have a limit of 100 data separated per pages, defaults to 1
+ - [blockchain](#blockchain): The blockchain on which you want to get the tokens, defaults to None
+
+## Returns
+
+<CodeBlock language="python">
+    <a href="/docs/python-sdk/models/Tokens">Tokens</a>
+</CodeBlock>
+
+The list of supported tokens ordered by market cap in a descending order.
+The market capitalization is in dollars, it can be null if the liquidity available for the given token is lower than 1000$.
+The market capitalization is based on USDT.
+
+The market capitalization of each token is computed as follow:
+average worth of token in liquidity pools * total token supply
+
+
+## Example
+
+### Usage
+
+```py
+import asyncio
+
+from BlockchainAPIsSync import BlockchainAPIsSync
+
+async def print_tokens():
+    # Create the BlockchainAPIsSync instance
+    # You can additionaly add an API key if you want
+    blockchain_apis_sync = BlockchainAPIsSync()
+    # Get the list of supported tokens
+    tokens = await blockchain_apis_sync.tokens(
+        page=1
+        blockchain=ethereum
+    )
+    print(tokens)
+    # We need to close our instance once we are done with BlockchainAPIs
+    await BlockchainAPIsSync.close()
+
+asyncio.run(print_tokens())
+```
+
+### Example response
+
+
+```json
+{
+    "page": 1,
+    "total_pages": 174,
+    "data": [
+        {
+            "blockchain": "avalanche",
+            "address": "0x130966628846BFd36ff31a822705796e8cb8C18D",
+            "decimals": 18,
+            "market_cap": 112266645.61161652
+        },
+        {
+            "blockchain": "avalanche",
+            "address": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
+            "decimals": 18,
+            "market_cap": 110936046.16721554
+        },
+        {
+            "blockchain": "avalanche",
+            "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+            "decimals": 18,
+            "market_cap": 88785441.02623828
+        },
+        {
+            "blockchain": "avalanche",
+            "address": "0x6e84a6216eA6dACC71eE8E6b0a5B7322EEbC0fDd",
+            "decimals": 18,
+            "market_cap": 71669567.812698
+        },
+        {
+            "blockchain": "avalanche",
+            "address": "0xd586E7F844cEa2F87f50152665BCbc2C279D8d70",
+            "decimals": 18,
+            "market_cap": 66925902.344998635
+        },
+        {
+            "blockchain": "avalanche",
+            "address": "0x2b2C81e08f1Af8835a78Bb2A90AE924ACE0eA4bE",
+            "decimals": 18,
+            "market_cap": 65308840.501452334
+        },
+        {
+            "blockchain": "avalanche",
+            "address": "0xc7198437980c041c805A1EDcbA50c1Ce5db95118",
+            "decimals": 6,
+            "market_cap": 62609470.072472
+        }
+    ]
+}
+
+```
+## Exceptions
+
+- [BlockchainNotSupportedException](/docs/python-sdk/exceptions/BlockchainNotSupportedException): When an invalid blockchain id is given
+- [InvalidPageException](/docs/python-sdk/exceptions/InvalidPageException): When an invalid page number is given
+
+## Parameters detailed
+### page
+
+Each request have a limit of 100 data separated per pages, defaults to 1
+- type: `int, Optional`
+- example: `1`
+
+### blockchain
+
+The blockchain on which you want to get the tokens, defaults to None
+- type: `str, Optional`
+- example: `ethereum`
+

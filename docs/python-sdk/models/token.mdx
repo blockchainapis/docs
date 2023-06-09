@@ -1,0 +1,51 @@
+---
+title: Token
+description: The Token model
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+@dataclass(slots=True, frozen=True)
+class Token
+    blockchain: str
+    address: str
+    decimals: int
+    market_cap: Decimal
+```
+
+The Token model
+## Attributes
+
+### blockchain
+
+The blockchain on which the token is
+- type: `str`
+- example: ` "avalanche"
+    `
+
+### address
+
+The address of the token on the blockchain
+- type: `str`
+- example: ` "0xc7198437980c041c805A1EDcbA50c1Ce5db95118"
+    `
+
+### decimals
+
+The decimals of the token
+- type: `int`
+- example: ` 6
+    `
+
+### market_cap
+
+Total supply of the token multiplied by the worth of one token in liquidity pools.
+
+The value is in dollars, it can be None if the liquidity of the token in pools is lower than 1000$
+
+This value is in Decimal, and is based on USDT.
+- type: `Decimal`
+- example: ` Decimal(62609470.072472)
+    `
+

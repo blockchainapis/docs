@@ -1,0 +1,103 @@
+---
+title: reserves
+description: Get the liquidity inside of the reserve of two tokens.
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+def reserves(self, blockchain: str, token0: str, token1: str, exchange: str | None=None) -> List[Reserve]:
+```
+Get the liquidity inside of the reserve of two tokens.
+
+## Parameters
+
+ - [blockchain](#blockchain): The id of the blockchain on which the exchange will happen. It is required because some tokens can have same address accross multiple blockchains
+ - [token0](#token0): The address of the first token of the pair
+ - [token1](#token1): The address of the second token of the pair
+ - [exchange](#exchange): The id of the exchange from which you want to get the reserve, defaults to None
+
+## Returns
+
+<CodeBlock language="python">
+    List[<a href="/docs/python-sdk/models/Reserve">Reserve</a>]
+</CodeBlock>
+
+The list of all of the reserve for the given pair, blockchain and exchange.
+Can return an empty list if the given pair was not found.
+
+
+## Example
+
+### Usage
+
+```py
+import asyncio
+
+from BlockchainAPIsSync import BlockchainAPIsSync
+
+async def print_reserves():
+    # Create the BlockchainAPIsSync instance
+    # You can additionaly add an API key if you want
+    blockchain_apis_sync = BlockchainAPIsSync()
+    # Get the liquidity inside of the reserve of two tokens.
+    reserves = await blockchain_apis_sync.reserves(
+        blockchain="ethereum"
+        token0="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+        token1="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+        exchange=uniswapv2_ethereum
+    )
+    print(reserves)
+    # We need to close our instance once we are done with BlockchainAPIs
+    await BlockchainAPIsSync.close()
+
+asyncio.run(print_reserves())
+```
+
+### Example response
+
+
+```json
+[
+    {
+        "blockchain": "avalanche",
+        "exchange": "lydia_finance_avalanche",
+        "token0": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+        "token1": "0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15",
+        "reserve0": 11100509297299255000,
+        "reserve1": 117592619550992960
+    }
+
+]
+```
+## Exceptions
+
+- [BlockchainNotSupportedException](/docs/python-sdk/exceptions/BlockchainNotSupportedException): When an invalid blockchain id is given
+- [ExchangeNotSupportedException](/docs/python-sdk/exceptions/ExchangeNotSupportedException): When an invalid exchange id is given
+- [PairNotFoundException](/docs/python-sdk/exceptions/PairNotFoundException): When a pair is not found for the given blockchain or exchange
+
+## Parameters detailed
+### blockchain
+
+The id of the blockchain on which the exchange will happen. It is required because some tokens can have same address accross multiple blockchains
+- type: `str`
+- example: `ethereum`
+
+### token0
+
+The address of the first token of the pair
+- type: `str`
+- example: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
+
+### token1
+
+The address of the second token of the pair
+- type: `str`
+- example: `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
+
+### exchange
+
+The id of the exchange from which you want to get the reserve, defaults to None
+- type: `str, Optional`
+- example: `uniswapv2_ethereum`
+

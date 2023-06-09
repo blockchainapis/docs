@@ -6,7 +6,7 @@ description: Get the amount of tokenOut that you will get after selling amountIn
 import CodeBlock from '@theme/CodeBlock';
 
 ```py
-async def amount_out(self, blockchain: str, tokenIn: str, tokenOut: str, amountIn: int, exchange: str | None=None) -> List[AmountOut]:
+def amount_out(self, blockchain: str, tokenIn: str, tokenOut: str, amountIn: int, exchange: str | None=None) -> List[AmountOut]:
 ```
 Get the amount of tokenOut that you will get after selling amountIn tokenIn
 
@@ -32,14 +32,14 @@ The list of the amount out that you will get on all of the exchanges. It can ret
 ```py
 import asyncio
 
-from BlockchainAPIs import BlockchainAPIs
+from BlockchainAPIsSync import BlockchainAPIsSync
 
 async def print_amount_out():
-    # Create the BlockchainAPIs instance
+    # Create the BlockchainAPIsSync instance
     # You can additionaly add an API key if you want
-    blockchain_apis = BlockchainAPIs()
+    blockchain_apis_sync = BlockchainAPIsSync()
     # Get the amount of tokenOut that you will get after selling amountIn tokenIn
-    amount_out = await blockchain_apis.amount_out(
+    amount_out = await blockchain_apis_sync.amount_out(
         blockchain="ethereum"
         tokenIn="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
         tokenOut="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
@@ -48,7 +48,7 @@ async def print_amount_out():
     )
     print(amount_out)
     # We need to close our instance once we are done with BlockchainAPIs
-    await BlockchainAPIs.close()
+    await BlockchainAPIsSync.close()
 
 asyncio.run(print_amount_out())
 ```

@@ -1,0 +1,63 @@
+---
+title: Pairs
+description: The Pairs model
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+@dataclass(slots=True, frozen=True)
+class Pairs
+    page: int
+    total_pages: int
+    data: List[Pair]
+```
+
+The Pairs model
+## Attributes
+
+### page
+
+The page returned by the request
+- type: `int`
+- example: ` 1
+    `
+
+### total_pages
+
+The total amount of pages available
+- type: `int`
+- example: ` 1804
+    `
+
+### data
+
+The list of pairs
+#### Type
+
+<CodeBlock language="python">
+    List[<a href="/docs/python-sdk/models/Pair">Pair</a>]
+</CodeBlock>
+
+
+#### Example
+
+```json
+    [
+        {
+            "blockchain": "ethereum",
+            "exchange": "uniswapv2_ethereum",
+            "token0": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "token1": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "fee": 300
+        },
+        {
+            "blockchain": "ethereum",
+            "exchange": "uniswapv2_ethereum",
+            "token0": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
+            "token1": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "fee": 300
+        }
+    ]
+    ```
+

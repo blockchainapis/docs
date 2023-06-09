@@ -1,0 +1,63 @@
+---
+title: AmountOut
+description: The AmountOut model
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+@dataclass(slots=True, frozen=True)
+class AmountOut
+    blockchain: str
+    exchange: str
+    tokenIn: str
+    tokenOut: str
+    amountIn: int
+    amountOut: int
+```
+
+The AmountOut model
+## Attributes
+
+### blockchain
+
+The id of blockchain on which the exchange is taking place
+- type: `str`
+- example: ` "avalanche"
+    `
+
+### exchange
+
+The id of the exchange used for this trade
+- type: `str`
+- example: ` "lydia_finance_avalanche"
+    `
+
+### tokenIn
+
+The address of the token that you sell
+- type: `str`
+- example: ` "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+    `
+
+### tokenOut
+
+The address of the token that you buy
+- type: `str`
+- example: ` "0xde3A24028580884448a5397872046a019649b084"
+    `
+
+### amountIn
+
+The amount of tokenIn that you sell
+- type: `int`
+- example: ` 1000000000000000000
+    `
+
+### amountOut
+
+The amount of tokenOut that you will get after selling amountIn tokenIn on this exchange
+- type: `int`
+- example: ` 11088529
+    `
+

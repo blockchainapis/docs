@@ -1,0 +1,86 @@
+---
+title: info
+description: Get information on a specific token
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+async def info(self, blockchain: str, token: str) -> Token:
+```
+Get information on a specific token
+
+## Parameters
+
+ - [blockchain](#blockchain): The blockchain on which you want to get the information of the token
+ - [token](#token): The address of the token that you want to get the informations from
+
+## Returns
+
+<CodeBlock language="python">
+    <a href="/docs/python-sdk/models/Token">Token</a>
+</CodeBlock>
+
+Informations on a specific token.
+This information includes:
+- The id of the blockchain that this token is
+- The address of the token
+- The decimals of it
+- The market cap
+
+
+## Example
+
+### Usage
+
+```py
+import asyncio
+
+from BlockchainAPIs import BlockchainAPIs
+
+async def print_info():
+    # Create the BlockchainAPIs instance
+    # You can additionaly add an API key if you want
+    blockchain_apis = BlockchainAPIs()
+    # Get information on a specific token
+    info = await blockchain_apis.info(
+        blockchain="ethereum"
+        token="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    )
+    print(info)
+    # We need to close our instance once we are done with BlockchainAPIs
+    await BlockchainAPIs.close()
+
+asyncio.run(print_info())
+```
+
+### Example response
+
+
+```json
+{
+    "blockchain": "avalanche",
+    "address": "0xc7198437980c041c805A1EDcbA50c1Ce5db95118",
+    "decimals": 6,
+    "market_cap": 62609470.072472
+}
+
+```
+## Exceptions
+
+- [BlockchainNotSupportedException](/docs/python-sdk/exceptions/BlockchainNotSupportedException): When an invalid blockchain id is given
+- [TokenNotFoundException](/docs/python-sdk/exceptions/TokenNotFoundException): When the given token is not found
+
+## Parameters detailed
+### blockchain
+
+The blockchain on which you want to get the information of the token
+- type: `str`
+- example: `ethereum`
+
+### token
+
+The address of the token that you want to get the informations from
+- type: `str`
+- example: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
+

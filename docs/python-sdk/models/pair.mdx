@@ -1,0 +1,55 @@
+---
+title: Pair
+description: The Pair model
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+@dataclass(slots=True, frozen=True)
+class Pair
+    blockchain: str
+    exchange: str
+    token0: str
+    token1: str
+    fee: int
+```
+
+The Pair model
+## Attributes
+
+### blockchain
+
+The blockchain id on which the pair is
+- type: `str`
+- example: ` "ethereum"
+    `
+
+### exchange
+
+The exchange id on which the pair is
+- type: `str`
+- example: ` "uniswapv2_ethereum"
+    `
+
+### token0
+
+The first token of the exchange
+- type: `str`
+- example: ` "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+    `
+
+### token1
+
+The second token of the exchange
+- type: `str`
+- example: ` "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    `
+
+### fee
+
+The fee of the pair in 100000 of percents (for example: 1000 is 1%)
+- type: `int`
+- example: ` 300
+    `
+

@@ -1,8 +1,8 @@
 ---
-title: BlockchainAPIs
+title: BlockchainAPIsSync
 description: High-frequency DEX API
 sidebar_position: 3
-sidebar_class_name: sidebar-blockchain-apis
+sidebar_class_name: sidebar-blockchain-apis-sync
 ---
 
 High-frequency DEX API
@@ -15,3 +15,6 @@ What sets our API apart? We've optimized performance to deliver an impressive 10
 Another game-changing feature is our seamless integration across various blockchains and protocols. With our API, you can reuse the same code without changing a single line, simplifying the development process and saving you valuable time.
 
 Ready to try it out? [Sign up for a free API key here](https://dashboard.blockchainapis.io) or start exploring the possibilities on this page. Need support or have questions? Join our [Discord community](https://discord.gg/GphRMJXmS5) where our team and fellow developers are eager to help you make the most of our powerful API.
+
+Please note that this class is not async which is less optimized. To run more otpimized
+requests, please use: BlockchainAPIs

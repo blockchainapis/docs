@@ -6,7 +6,7 @@ description: Get the list of blockchains supported by the API
 import CodeBlock from '@theme/CodeBlock';
 
 ```py
-async def blockchains(self) -> List[Blockchain]:
+def blockchains(self) -> List[Blockchain]:
 ```
 Get the list of blockchains supported by the API
 ## Returns
@@ -27,17 +27,17 @@ other function calls.
 ```py
 import asyncio
 
-from BlockchainAPIs import BlockchainAPIs
+from BlockchainAPIsSync import BlockchainAPIsSync
 
 async def print_blockchains():
-    # Create the BlockchainAPIs instance
+    # Create the BlockchainAPIsSync instance
     # You can additionaly add an API key if you want
-    blockchain_apis = BlockchainAPIs()
+    blockchain_apis_sync = BlockchainAPIsSync()
     # Get the list of blockchains supported by the API
-    blockchains = await blockchain_apis.blockchains()
+    blockchains = await blockchain_apis_sync.blockchains()
     print(blockchains)
     # We need to close our instance once we are done with BlockchainAPIs
-    await BlockchainAPIs.close()
+    await BlockchainAPIsSync.close()
 
 asyncio.run(print_blockchains())
 ```

@@ -1,0 +1,47 @@
+---
+title: Blockchain
+description: The Blockchain model
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+@dataclass(slots=True, frozen=True)
+class Blockchain
+    blockchain: str
+    name: str
+    chain_id: int
+    explorer: str
+```
+
+The Blockchain model
+## Attributes
+
+### blockchain
+
+The blockchain id that should be used for other calls
+- type: `str`
+- example: ` "avalanche"
+    `
+
+### name
+
+The name of the blockchain
+- type: `str`
+- example: ` "Avalanche"
+    `
+
+### chain_id
+
+The chain id of the blockchain that is used to add the blockchain in wallets like Metamask
+- type: `int`
+- example: ` 43114
+    `
+
+### explorer
+
+The url to the explorer of the blockchain
+- type: `str`
+- example: ` "https://snowtrace.io/"
+    `
+

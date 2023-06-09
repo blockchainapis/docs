@@ -1,0 +1,63 @@
+---
+title: Reserve
+description: The Reserve model
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+@dataclass(slots=True, frozen=True)
+class Reserve
+    blockchain: str
+    exchange: str
+    token0: str
+    token1: str
+    reserve0: int
+    reserve1: int
+```
+
+The Reserve model
+## Attributes
+
+### blockchain
+
+The blockchain on which the reserve is
+- type: `str`
+- example: ` "avalanche"
+    `
+
+### exchange
+
+The id of the exchange on which this reserve is
+- type: `str`
+- example: ` "lydia_finance_avalanche"
+    `
+
+### token0
+
+The address of the token0
+- type: `str`
+- example: ` "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+    `
+
+### token1
+
+The address of the token1
+- type: `str`
+- example: ` "0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15"
+    `
+
+### reserve0
+
+The amount of token0 inside of the reserve
+- type: `int`
+- example: ` 11100509297299255000
+    `
+
+### reserve1
+
+The amount of token1 inside of the reserve
+- type: `int`
+- example: ` 117592619550992960
+    `
+
