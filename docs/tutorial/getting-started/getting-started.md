@@ -157,7 +157,7 @@ the address of the USDC token.
 
 The amount of tokenIn that we are selling. Here we have put `1 * 10**18` because we want to sell 1ETH.
 
-We have added `10**18` because the wrapped ETH have 18 decimals.
+We have added `10**18` because the wrapped ETH token have 18 decimals.
 
 If you are willing to know the decimal of a token you can follow this tutorial: [How to get the decimals of a token](/docs/tutorial/tokens/get-token-decimals)
 
@@ -210,7 +210,7 @@ What interest us are these values:
 - `amountOut`: The amount of `tokenOut` that we get after selling `amountIn` `tokenIn`
 - `exchange`: The id of the exchange that gives this rate.
 
-In order to retrieve all values, we first need to loop for the result:
+In order to retrieve all values, we first need to loop the result:
 
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
@@ -287,13 +287,15 @@ for amount_out in amount_outs:
 
 This code should give you something like this:
 
-```
+```sh
 =================
 Blockchain: ethereum
+# highlight-next-line
 Exchange: dooar_ethereum
 tokenIn: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
 tokenOut: 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
 amountIn: 1000000000000000000
+# highlight-next-line
 amountOut: 1705409482
 =======================
 Blockchain: ethereum
@@ -308,7 +310,9 @@ amountOut: 210231391
 
 Here, we can see, for example, in the exchange with id `dooar_ethereum`, the amountOut is: `1705409482`
 
-Which means, than in `dooar_ethereum`, we will get `1705409482` after exchanging 1 ETH
+Which means, than in `dooar_ethereum`, we will get `1705409482` USDC after exchanging 1 ETH
 
-USDC have 6 decimals (in order to get the amount of decimals per token, you can follow this tutorial: [get token decimals](docs/tutorial/tokens/get-token-decimals)),
-which means that the amount of USDC that we will get after exchanging 1 ETH will be: `1705.409482` USDC in dooar_ethereum
+Since USDC have 6 decimals (in order to get the amount of decimals per token, you can follow this tutorial: [get token decimals](docs/tutorial/tokens/get-token-decimals)),
+which means that the amount of USDC that we will get after exchanging 1 ETH will be: `1705.409482` USDC in the dooar_ethereum exchange.
+
+_Please note: this amount is computed with the fee of the exchange, in this example you will get the exact amount of USDC like if you really did the exchange inside of dooar_ethereum. Be careful, some tokens have an additional fee on buy/sell which is not taken in account with this method._
