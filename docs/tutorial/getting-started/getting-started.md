@@ -15,7 +15,7 @@ keywords:
 
 Learn how to get the current price of Ethereum using Blockchain APIs.
 
-If you are just interested in the code, you can get it [here](https://github.com/blockchainapis/blockchain-apis-python-example/blob/master/src/async/get_eth_price.py)
+If you are just interested in the code, you can get it [here](https://github.com/blockchainapis/blockchain-apis-examples/tree/master/examples/1-get-ethereum-price)
 
 ## Step 1
 
@@ -84,7 +84,7 @@ Get the price of selling 1 ETH for USDC
 from blockchainapis import BlockchainAPIsSync
 
 blockchain_apis = BlockchainAPIsSync()
-amount_out = blockchain_apis.amount_out(
+amount_outs = blockchain_apis.amount_out(
     # The blockchain on which you want the exchange to take place
     blockchain="ethereum",
     # The address of the token that we sell, here it is WETH address
@@ -113,7 +113,7 @@ async def get_price():
     # async with feature, this way we are sure that the API instance
     # is closed at the end
     async with BlockchainsAPIs() as blockchain_apis:
-        amount_out = await blockchain_apis.amount_out(
+        amount_outs = await blockchain_apis.amount_out(
             # The blockchain on which you want the exchange to take place
             blockchain="ethereum",
             # The address of the token that we sell, here it is WETH address
@@ -163,4 +163,152 @@ If you are willing to know the decimal of a token you can follow this tutorial: 
 
 ## Step 4 retrieve result
 
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
 
+The <a href="/docs/python-sdk/blockchain-apis-sync/amount-out" target="_blank">amount_out</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model.
+
+Here is his structure:
+```py
+@dataclass(slots=True, frozen=True)
+class AmountOut
+    blockchain: str
+    exchange: str
+    tokenIn: str
+    tokenOut: str
+    amountIn: int
+    amountOut: int
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+The <a href="/docs/python-sdk/blockchain-apis/amount-out" target="_blank">amount_out</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model.
+
+Here is his structure:
+```py
+@dataclass(slots=True, frozen=True)
+class AmountOut
+    blockchain: str
+    exchange: str
+    tokenIn: str
+    tokenOut: str
+    amountIn: int
+    amountOut: int
+```
+
+</TabItem>
+</Tabs>
+
+In this structure, these values are the same as the one that we used to make the API call:
+- `blockchain` is the id of the blockchain from which you want to get the price from
+- `tokenIn` is the address of the token that we sell
+- `tokenOut` is the address of the token that we buy
+- `amountIn` is the amount of `tokenIn` that we sell in exchange of `tokenOut`
+
+What interest us are these values:
+- `amountOut`: The amount of `tokenOut` that we get after selling `amountIn` `tokenIn`
+- `exchange`: The id of the exchange that gives this rate.
+
+In order to retrieve all values, we first need to loop for the result:
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py
+# Previous code
+for amount_out in amount_outs:
+    # Do something with the AmountOut object
+    pass
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py
+        # Previous code
+        for amount_out in amount_outs:
+            # Do something with the AmountOut object
+            pass
+```
+
+</TabItem>
+</Tabs>
+
+The, we will print all of the values:
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py
+# Previous code
+print("=======================")
+# We loop to get all of the results
+for amount_out in amount_outs:
+    # The blockchain
+    print(f"Blockchain: {amount_out.blockchain}")
+    # The id of the exchange
+    print(f"Exchange: {amount_out.exchange}")
+    # The address of the token that we sell
+    print(f"tokenIn: {amount_out.tokenIn}")
+    # The address of the token that we buy
+    print(f"tokenOut: {amount_out.tokenOut}")
+    # The amount of tokenIn that we sell
+    print(f"amountIn: {amount_out.amountIn}")
+    # The amount of tokenOut that we get after selling amountIn tokenIn
+    print(f"amountOut: {amount_out.amountOut}")
+    print("=======================")
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py
+        # Previous code
+        print("=======================")
+        # We loop to get all of the results
+        for amount_out in amount_outs:
+            # The blockchain
+            print(f"Blockchain: {amount_out.blockchain}")
+            # The id of the exchange
+            print(f"Exchange: {amount_out.exchange}")
+            # The address of the token that we sell
+            print(f"tokenIn: {amount_out.tokenIn}")
+            # The address of the token that we buy
+            print(f"tokenOut: {amount_out.tokenOut}")
+            # The amount of tokenIn that we sell
+            print(f"amountIn: {amount_out.amountIn}")
+            # The amount of tokenOut that we get after selling amountIn tokenIn
+            print(f"amountOut: {amount_out.amountOut}")
+            print("=======================")
+```
+</TabItem>
+</Tabs>
+
+This code should give you something like this:
+
+```
+=================
+Blockchain: ethereum
+Exchange: dooar_ethereum
+tokenIn: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+tokenOut: 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
+amountIn: 1000000000000000000
+amountOut: 1705409482
+=======================
+Blockchain: ethereum
+Exchange: elk_finance_ethereum
+tokenIn: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+tokenOut: 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
+amountIn: 1000000000000000000
+amountOut: 210231391
+=======================
+...
+```
+
+Here, we can see, for example, in the exchange with id `dooar_ethereum`, the amountOut is: `1705409482`
+
+Which means, than in `dooar_ethereum`, we will get `1705409482` after exchanging 1 ETH
+
+USDC have 6 decimals (in order to get the amount of decimals per token, you can follow this tutorial: [get token decimals](docs/tutorial/tokens/get-token-decimals)),
+which means that the amount of USDC that we will get after exchanging 1 ETH will be: `1705.409482` USDC in dooar_ethereum
