@@ -17,7 +17,7 @@ Learn how to get the current price of Ethereum using Blockchain APIs.
 
 If you are just interested in the code, you can get it [here](https://github.com/blockchainapis/blockchain-apis-examples/tree/master/examples/1-get-ethereum-price)
 
-## Step 1
+## Step 1: Install the SDK
 
 Get the SDK for your favorite language:
 
@@ -33,7 +33,7 @@ import CodeBlock from "@theme/CodeBlock";
     </TabItem>
 </Tabs>
 
-## Step 2
+## Step 2: Create the instance
 
 Create the Blockchain APIs instance:
 
@@ -73,7 +73,7 @@ asyncio.run(get_price())
 </TabItem>
 </Tabs>
 
-## Step 3
+## Step 3: Make API call
 
 Get the price of selling 1 ETH for USDC
 
@@ -161,7 +161,7 @@ We have added `10**18` because the wrapped ETH token have 18 decimals.
 
 If you are willing to know the decimal of a token you can follow this tutorial: [How to get the decimals of a token](/docs/tutorial/tokens/get-token-decimals)
 
-## Step 4 retrieve result
+## Step 4: Retrieve result
 
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
