@@ -41,7 +41,9 @@ Create the Blockchain APIs instance:
 <TabItem value="python" label="Python">
 
 ```py
+from blockchainapis import BlockchainAPIsSync
 
+blockchain_apis = BlockchainAPIsSync()
 ```
 :::success
 This solution works, but for better performance, you can use [Python-Async](?programming-language=async-python)
@@ -53,20 +55,18 @@ This solution works, but for better performance, you can use [Python-Async](?pro
 ```py
 import asyncio
 
-async def get_amount_out(blockchain: str, token0: str, token1: str, amountIn: int):
-    async with BlockchainApi(API_KEY) as blockchain_api:
-        return await blockchain_api.get_amount_out(blockchain, token0, token1, amountIn)
+from blockchainapis import BlockchainAPIs
 
-asyncio.run(get_amount_out(...))
-```
+# We need to create an async function, because we can't do async calls in main Python thread.
+async def get_price():
+    # We instanciate the Blockchain APIs instance using Python
+    # async with feature, this way we are sure that the API instance
+    # is closed at the end
+    async with BlockchainsAPIs() as blockchain_apis:
+        # do some stuff...
+        pass
 
-</TabItem>
-<TabItem value="javascript" label="JavaScript">
-
-```js
-function helloWorld() {
-  console.log('Hello, world!');
-}
+asyncio.run(get_price())
 ```
 
 </TabItem>
