@@ -15,7 +15,7 @@ keywords:
 
 Learn how to get the current price of Ethereum using Blockchain APIs.
 
-If you are just interested in the code, you can get it [here](https://github.com/blockchainapis/blockchain-apis-examples/tree/master/examples/1-get-ethereum-price)
+You can get the code for this tutorial [here](https://github.com/blockchainapis/blockchain-apis-examples/tree/master/examples/1-get-ethereum-price)
 
 ## Step 1: Install the SDK
 
@@ -73,7 +73,7 @@ asyncio.run(get_price())
 </TabItem>
 </Tabs>
 
-## Step 3: Make API call
+## Step 3: Make the API call
 
 Get the price of selling 1 ETH for USDC
 
