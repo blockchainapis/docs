@@ -9,7 +9,9 @@ import TabItem from "@theme/TabItem";
 
 # Get Your API Key
 
-You can use Blockchain APIs without an API key. But without an API key, you are heavily limited.
+You can use Blockchain APIs in a limited way without an API key. With an API key you can
+get more requests per second and per month, this way you can utilise the power of Blockchain
+APIs.
 
 In this tutorial, you will learn how you can get an API key for free.
 
@@ -19,7 +21,7 @@ In this tutorial, you will learn how you can get an API key for free.
 
 First, you need to create an account at: https://dashboard.blockchainapis.io/
 
-To do so, specify your e-mail address in the form:
+Specify your e-mail address in the form:
 
 <img loading="eager" alt="Blockchain APIs dashboard (Sign UP)" src="/img/docs/api-key/sign-up.png" />
 
@@ -36,7 +38,7 @@ Make sure that the url that you have starts with: https://dashboard.blockchainap
 <Tabs groupId="subscription" queryString>
 <TabItem value="individual" label="Individual" default>
 
-If you create an account for yourself, you should fill up this form. If you instead
+If you create an account for yourself, you should fill up this form. If you instead whish
 to create an account for your company, follow [this link](?subscription=company)
 
 <img loading="eager" alt="Account creation (Individual)" src="/img/docs/api-key/create-account.png" />
@@ -45,7 +47,7 @@ to create an account for your company, follow [this link](?subscription=company)
 </TabItem>
 <TabItem value="company" label="Company">
 
-If you create an account for your company, you need to fill the form below. If you instead want
+If you create an account for your company, you need to fill the form below. If you instead whish
 to create an account as an individual, follow [this link](?subscription=individual)
 
 <img loading="eager" alt="Account creation (Company)" src="/img/docs/api-key/create-account-company.png" />
@@ -88,6 +90,12 @@ You can now just click on the `Copy` button:
 
 <img loading="eager" alt="API key with arrow" src="/img/docs/api-key/api-key-arrow.png" />
 
+:::danger
+You should never share your API key with anyone, our support will never ask for your API key.
+If you think that your API key is no longer safe, you can reset it by clicking on
+the `Reset` button near the `Copy` button.
+:::
+
 ## STEP 3: Use your API for a specific language
 
 In this step you will be able to import your API key for your favorite language
@@ -119,8 +127,8 @@ pip install blockchain-apis
 ```py
 from blockchainapis import BlockchainAPIsSync
 
-# Replace this with your API key
-api_key = "mioQ5eWvjcEVnP1IasLN+W7eKv7TPpFDoyK7/4Hdj5dRi1hOozzwrmKBNpfcRNy8IoY="
+# Put your API key here
+api_key = "<put your API key here>"
 
 blockchain_apis = BlockchainAPIsSync(api_key)
 
@@ -136,15 +144,15 @@ import asyncio
 
 from blockchainapis import BlockchainAPIs
 
-# Replace this with your API key
-api_key = "mioQ5eWvjcEVnP1IasLN+W7eKv7TPpFDoyK7/4Hdj5dRi1hOozzwrmKBNpfcRNy8IoY="
+# Put your API key here
+api_key = "<put your API key here>"
 
 async def get_blockchains():
     async with BlockchainAPIs(api_key) as blockchain_apis:
         # do you API calls
         print(await blockchain_apis.blockchains())
 
-asyncio(get_blockchains())
+asyncio.run(get_blockchains())
 ```
 
 </TabItem>
