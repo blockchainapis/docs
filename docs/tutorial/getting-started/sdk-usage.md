@@ -39,15 +39,15 @@ blockchainapis
 The code of the SDK is open source and can be found at: https://github.com/blockchainapis/blockchain-apis-python-client
 :::
 
-<Tabs groupId="part" queryString>
-<TabItem value="main-class" label="Main Class">
+### Main Class
 
-In the tree above, you can see at the root two files:
+In the [tree above](#sdk-organisation), you can see at the root, two files:
 - `BlockchainAPIs.py`
 - `BlockchainAPIsSync.py`
 
 Inside of each of these files you will find methods that allow you to interact with Blockchain APIs.
-So you need to instanciate any of these classes this way:
+When you want to interact with [Blockchain APIs](https://www.blockchainapis.io), you need to instantiate one of these
+classes this way:
 
 ```python showLineNumbers
 from blockchainapis import BlockchainAPIsSync
@@ -104,12 +104,11 @@ asyncio.run(create_instance())
 You can find all of the available methods in the [SDK Reference](/docs/python-sdk/blockchain-apis/)
 :::
 
-Each of the methods from the main class return a model. You can look at how you can use these models by folowing [this link](?part=models)
+Each of the methods of the API will return a model, you can find more about models in the next part.
 
-</TabItem>
-<TabItem value="models" label="Models">
+### Models
 
-In the above tree, you can see a "models" folder. This folder contains the returned values of the API.
+In the [above tree](#sdk-organisation), you can see a "models" folder. This folder contains the returned values of the API.
 
 Each time you do an API call with the main class, one of the model is returned.
 
@@ -148,8 +147,11 @@ for blockchain in blockchains:
     print(blockchain_id)
 ```
 
-</TabItem>
-<TabItem value="exceptions" label="Exceptions">
+:::tip
+You can see the list of models inside of the [SDK Reference for Python](/docs/python-sdk/models/)
+:::
+
+### Handle Exceptions
 
 In the [tree above](#sdk-organisation), you can see an `exceptions` folder, this folder contains all of the Exceptions that can be thrown by the API.
 
@@ -209,16 +211,20 @@ async def will_throw():
 asyncio.run(will_throw())
 ```
 
+:::tip
+For a list of all of the exceptions that can be thrown, you can look at the [SDK reference for Python](/docs/python-sdk/exceptions/)
+:::
+
 #### You make more requests than allowed for your API key
 
 Your API key have a limited amount of requests per second depending on your plan.
 
 Without an API key, you get 40 requests per minute.
 
-The exception thrown when this occurs is this one: [TooManyRequestsException](/docs/python-sdk/exceptions/too-many-requests-exception)
+The exception thrown when you do more requests than you are allowed is: [TooManyRequestsException](/docs/python-sdk/exceptions/too-many-requests-exception)
 
 To prevent this Exception, you can:
-- Get an API key if you don't have one following this tutorial: [Get your API key](/docs/tutorial/getting-started/get-api-key)
+- If you don't have an API key, follow this tutorial: [Get your API key](/docs/tutorial/getting-started/get-api-key)
 - Increase your plan to get more requests per second [inside of your dashboard](https://dashboard.blockchainapis.io/billing)
 
 #### Your API key is invalid or expired
@@ -227,16 +233,17 @@ You get an [UnauthorizedException](/docs/python-sdk/exceptions/unauthorized-exce
 
 To prevent this from hapenning, make sure that you copied the right API key from [your dashboard](https://dashboard.blockchainapis.io/api-key)
 
-</TabItem>
-</Tabs>
+:::tip
+All of the Exceptions that are thrown inherit from [BlockchainAPIsException](/docs/python-sdk/exceptions/blockchain-apis-exception), this way, if you want to know if an exception comes from BlockchainAPIs, you can catch this exception like in [this example](https://github.com/blockchainapis/blockchain-apis-examples/blob/master/examples/3-catch-exceptions/python/catch_exceptions.py).
+:::
 
 ## To summarize
 
-In order to interact with Blockchain APIs, you first need to instanciate the [Main Class](?part=main-class).
+In order to interact with Blockchain APIs, you first need to instanciate the [Main Class](#main-class).
 Then you can call the method that you want in order to gather the data that you need. Each of the method that you
-call will return a [Model](?part=models).
+call will return a [Model](#models).
 
-Be careful, sometimes the API might return some [Exceptions](?part=exceptions) that you can catch.
+Be careful, sometimes the API might return some [Exceptions](#exceptions) that you can catch.
 
 </TabItem>
 </Tabs>
