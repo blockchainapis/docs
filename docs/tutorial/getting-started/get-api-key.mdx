@@ -15,6 +15,8 @@ In this tutorial, you will learn how you can get an API key for free.
 
 ## STEP 1: Create an account
 
+### Verify your email
+
 First, you need to create an account at: https://dashboard.blockchainapis.io/
 
 To do so, specify your e-mail address in the form:
@@ -56,6 +58,94 @@ If your company is part of the European Union, the VAT number of your company wi
 The option to put the VAT number of your company is only displayed if you select a country that
 is part of the European Union
 :::
+
+</TabItem>
+</Tabs>
+
+### Choose your plan
+
+Once you have created your account, you can choose your plan depending on your needs on this page:
+
+<img loading="eager" alt="Choose plan page" src="/img/docs/api-key/choose-plan.png" />
+
+In order to get a free API key, you can choose the `Developer` tier:
+
+<img loading="eager" alt="Choose plan page (Developer tier selected)" src="/img/docs/api-key/choose-plan-developer.png" />
+
+## STEP 2: Get your API key from the dashboard
+
+Once you have selected your plan, you will be redirected to the dashboard:
+
+<img loading="eager" alt="Blockchain APIs dashboard index" src="/img/docs/api-key/dashboard.png" />
+
+In order to see your API key, click on `API Key` or follow this link: https://dashboard.blockchainapis.io/api-key
+
+Your API key should be displayed here:
+
+<img loading="eager" alt="API key" src="/img/docs/api-key/api-key.png" />
+
+You can now just click on the `Copy` button:
+
+<img loading="eager" alt="API key with arrow" src="/img/docs/api-key/api-key-arrow.png" />
+
+## STEP 3: Use your API for a specific language
+
+In this step you will be able to import your API key for your favorite language
+
+### Install the SDK for your favorite language
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python" default>
+
+```sh
+pip install blockchain-apis
+```
+
+</TabItem>
+<TabItem value="python-async" label="Python-Async">
+
+```sh
+pip install blockchain-apis
+```
+
+</TabItem>
+</Tabs>
+
+### Instantiate the main class with the API
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python" default>
+
+```py
+from blockchainapis import BlockchainAPIsSync
+
+# Replace this with your API key
+api_key = "mioQ5eWvjcEVnP1IasLN+W7eKv7TPpFDoyK7/4Hdj5dRi1hOozzwrmKBNpfcRNy8IoY="
+
+blockchain_apis = BlockchainAPIsSync(api_key)
+
+# do some calls
+print(blockchain_apis.blockchains())
+```
+
+</TabItem>
+<TabItem value="python-async" label="Python-Async">
+
+```py
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+# Replace this with your API key
+api_key = "mioQ5eWvjcEVnP1IasLN+W7eKv7TPpFDoyK7/4Hdj5dRi1hOozzwrmKBNpfcRNy8IoY="
+
+async def get_blockchains():
+    async with BlockchainAPIs(api_key) as blockchain_apis:
+        # do you API calls
+        print(await blockchain_apis.blockchains())
+
+asyncio(get_blockchains())
+```
 
 </TabItem>
 </Tabs>
