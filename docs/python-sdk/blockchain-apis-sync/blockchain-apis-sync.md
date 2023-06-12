@@ -1,7 +1,7 @@
 ---
 title: BlockchainAPIsSync
 description: High-frequency DEX API
-sidebar_position: 0
+sidebar_position: 2
 sidebar_class_name: sidebar-blockchain-apis-sync
 ---
 
