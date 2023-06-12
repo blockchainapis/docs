@@ -166,3 +166,44 @@ class Blockchain
 - `explorer`: The url of the explorer of transactions for the blockchain, for example: https://etherscan.io/
 
 ### Get the blockchain ids
+
+Here we loop through the result in order to print the id of the blockchain:
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+
+blockchains = blockchain_apis.blockchains()
+
+# Loop through the result
+for blockchain in blockchains:
+    # print the id of each blockchain
+    print(f"- {blockchain.blockchain}")
+
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+async def get_blockchains():
+    async with BlockchainAPIs() as blockchain_apis:
+        blockchains = await blockchain_apis.blockchains()
+        # loop through the result
+        for blockchain in blockchains:
+            # Print the id of each blockchain
+            print(f"- {blockchain.blockchain}")
+
+asyncio.run(get_blockchains())
+```
+
+</TabItem>
+</Tabs>
