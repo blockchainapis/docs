@@ -18,7 +18,19 @@ import CodeBlock from "@theme/CodeBlock";
 <TabItem value="python" label="Python">
 
 ```
-test
+blockchainapis
+├── BlockchainAPIs.py
+├── BlockchainAPIsSync.py
+├── exceptions
+│   ├── BlockchainAPIsException.py
+│   ├── BlockchainNotSupportedException.py
+│   ├── ExchangeNotSupportedException.py
+│   ├── ...
+├── models
+│   ├── AmountIn.py
+│   ├── AmountOut.py
+│   ├── ...
+
 ```
 
 </TabItem>
