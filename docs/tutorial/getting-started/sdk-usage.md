@@ -151,7 +151,7 @@ for blockchain in blockchains:
 You can see the list of models inside of the [SDK Reference for Python](/docs/python-sdk/models/)
 :::
 
-### Handle Exceptions
+### Exceptions
 
 In the [tree above](#sdk-organisation), you can see an `exceptions` folder, this folder contains all of the Exceptions that can be thrown by the API.
 
