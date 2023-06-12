@@ -141,7 +141,7 @@ Here we call the <a href="/docs/python-sdk/blockchain-apis/amount-out" target="_
 The id of the blockchain from which we are willing to get the price. Here we have put `ethereum` because we want the price
 of selling 1 ETH for USDC on the `ethereum` blockchain.
 
-If you want to get the list of the available blockchains you can follow this tutorial: [Get Supported Blockchains](/docs/tutorial/getting-started/get-supported-blockchains)
+Follow this tutorial to get the list of available blockchains: [Get Supported Blockchains](/docs/tutorial/getting-started/get-supported-blockchains)
 
 #### tokenIn
 
@@ -210,7 +210,7 @@ What interest us are these values:
 - `amountOut`: The amount of `tokenOut` that we get after selling `amountIn` `tokenIn`
 - `exchange`: The id of the exchange that gives this rate.
 
-In order to retrieve all values, we first need to loop the result:
+To retrieve all values, we first need to loop the result:
 
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
@@ -235,7 +235,7 @@ for amount_out in amount_outs:
 </TabItem>
 </Tabs>
 
-The, we will print all of the values:
+Then, we will print all the values:
 
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
@@ -312,7 +312,6 @@ Here, we can see, for example, in the exchange with id `dooar_ethereum`, the amo
 
 Which means, than in `dooar_ethereum`, we will get `1705409482` USDC after exchanging 1 ETH
 
-Since USDC have 6 decimals (in order to get the amount of decimals per token, you can follow this tutorial: [get token decimals](docs/tutorial/tokens/get-token-decimals)),
-which means that the amount of USDC that we will get after exchanging 1 ETH will be: `1705.409482` USDC in the dooar_ethereum exchange.
+USDC have 6 decimals, which means that we will get 1705.409482 USDC after exchanging 1 ETH in dooar_ethereum.
 
-_Please note: this amount is computed with the fee of the exchange, in this example you will get the exact amount of USDC like if you really did the exchange inside of dooar_ethereum. Be careful, some tokens have an additional fee on buy/sell which is not taken in account with this method._
+_Please  note: The fee of the exchange is took in account by the API. Blockchain APIs is giving you the exact amount that you will get as if you really did the exchange. Be careful, some tokens have an  extra fee on buy/sell which is not taken in account with this  method._
