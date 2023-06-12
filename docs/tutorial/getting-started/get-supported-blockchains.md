@@ -14,6 +14,6 @@ tags:
 - blockchains
 ---
 
-Each blockchain have a unique id, you need this id in order to know with which blockchain you are willing to interact in Blockchain APIs.
+Each blockchain have a unique id, you need this id in order to know with which blockchain you are willing to interact with in Blockchain APIs.
 
 
