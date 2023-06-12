@@ -40,20 +40,20 @@ Create the Blockchain APIs instance:
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
 
-```py
+```py showLineNumbers
 from blockchainapis import BlockchainAPIsSync
 
 blockchain_apis = BlockchainAPIsSync()
 # do some stuff...
 ```
 :::success
-This solution works, but for better performance, you can use [Python-Async](?programming-language=async-python)
+This solution works, but for better performance, you can use [Python-Async](?programming-language=async-python#step-2-create-the-instance)
 :::
 
 </TabItem>
 <TabItem value="async-python" label="Python-Async">
 
-```py
+```py showLineNumbers
 import asyncio
 
 from blockchainapis import BlockchainAPIs
@@ -63,7 +63,7 @@ async def get_price():
     # We instanciate the Blockchain APIs instance using Python
     # async with feature, this way we are sure that the API instance
     # is closed at the end
-    async with BlockchainsAPIs() as blockchain_apis:
+    async with BlockchainAPIs() as blockchain_apis:
         # do some stuff...
         pass
 
@@ -80,7 +80,7 @@ Get the price of selling 1 ETH for USDC
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
 
-```py
+```py showLineNumbers
 from blockchainapis import BlockchainAPIsSync
 
 blockchain_apis = BlockchainAPIsSync()
@@ -102,7 +102,7 @@ Here we call the <a href="/docs/python-sdk/blockchain-apis-sync/amount-out" targ
 </TabItem>
 <TabItem value="async-python" label="Python-Async">
 
-```py
+```py showLineNumbers
 import asyncio
 
 from blockchainapis import BlockchainAPIs
@@ -215,7 +215,7 @@ To retrieve all values, we first need to loop the result:
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
 
-```py
+```py showLineNumbers
 # Previous code
 for amount_out in amount_outs:
     # Do something with the AmountOut object
@@ -225,7 +225,7 @@ for amount_out in amount_outs:
 </TabItem>
 <TabItem value="async-python" label="Python-Async">
 
-```py
+```py showLineNumbers
         # Previous code
         for amount_out in amount_outs:
             # Do something with the AmountOut object
@@ -240,7 +240,7 @@ Then, we will print all the values:
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
 
-```py
+```py showLineNumbers
 # Previous code
 print("=======================")
 # We loop to get all of the results
@@ -263,7 +263,7 @@ for amount_out in amount_outs:
 </TabItem>
 <TabItem value="async-python" label="Python-Async">
 
-```py
+```py showLineNumbers
         # Previous code
         print("=======================")
         # We loop to get all of the results
