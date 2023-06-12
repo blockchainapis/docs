@@ -79,3 +79,90 @@ asyncio.run(get_blockchains())
 
 </TabItem>
 </Tabs>
+
+## Step 3: Make the API call
+
+Get all blockchains supported by [Blockchain APIs](https://www.blockchainapis.io) with all of their informations.
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+# Create the blockchain_apis instance that allow us to make calls
+# to Blockchain APIs
+blockchain_apis = BlockchainAPIsSync()
+
+# Get the blockchains
+blockchains = blockchain_apis.blockchains()
+```
+
+Here we call the <a href="/docs/python-sdk/blockchain-apis-sync/blockchains" target="_blank">blockchains</a> method of the Blockchain APIs instance.
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+async def get_blockchains():
+    async with BlockchainAPIs() as blockchain_apis:
+        # Make an API call in order to get the list of blockchains.
+        blockchains = await blockchain_apis.blockchains()
+
+asyncio.run(get_blockchains())
+```
+
+Here we call the <a href="/docs/python-sdk/blockchain-apis/blockchains" target="_blank">blockchains</a> method of the Blockchain APIs instance.
+
+</TabItem>
+</Tabs>
+
+## Step 4: Retrieve result
+
+### The returned model
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+This method call return a List of [Blockchain](/docs/python-sdk/models/blockchain) models.
+
+Here is the structure of one Blockchain model:
+
+```py
+@dataclass(slots=True, frozen=True)
+class Blockchain
+    blockchain: str
+    name: str
+    chain_id: int
+    explorer: str
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+This method call return a List of [Blockchain](/docs/python-sdk/models/blockchain) models.
+
+Here is the structure of one Blockchain model:
+
+```py
+@dataclass(slots=True, frozen=True)
+class Blockchain
+    blockchain: str
+    name: str
+    chain_id: int
+    explorer: str
+```
+
+</TabItem>
+</Tabs>
+
+- `blockchain`: Is the id of the blockchain, this is the field that we are interested in here
+- `name`: The name of the blockchain, for example: `Ethereum`
+- `chain_id`: The id of the chain (for example, the Ethereum blockchain has an id of `1`)
+- `explorer`: The url of the explorer of transactions for the blockchain, for example: https://etherscan.io/
+
+### Get the blockchain ids
