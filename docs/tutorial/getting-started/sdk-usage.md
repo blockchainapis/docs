@@ -247,5 +247,3 @@ Be careful, sometimes the API might return some [Exceptions](#exceptions) that y
 
 </TabItem>
 </Tabs>
-
-

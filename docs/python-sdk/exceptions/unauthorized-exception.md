@@ -1,6 +1,7 @@
 ---
 title: UnauthorizedException
 description: Thrown when you are trying to make an API request with an invalid or expiredAPI key.
+sidebar_position: 7
 ---
 
 ```py

@@ -1,6 +1,7 @@
 ---
 title: ExchangeNotSupportedException
 description: Thrown when an Invalid exchange id is given during a call to the API.
+sidebar_position: 3
 ---
 
 ```py

@@ -1,6 +1,7 @@
 ---
 title: BlockchainNotSupportedException
 description: Thrown when an Invalid blockchain id is put during a call to the API.
+sidebar_position: 5
 ---
 
 ```py

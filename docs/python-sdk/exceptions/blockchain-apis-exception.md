@@ -1,6 +1,7 @@
 ---
 title: BlockchainAPIsException
 description: Thrown when the API returns us an Exception
+sidebar_position: 4
 ---
 
 ```py

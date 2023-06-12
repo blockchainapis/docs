@@ -1,6 +1,7 @@
 ---
 title: TokenNotFoundException
 description: Thrown when you try to get informations on a token that does not exist inside of our database.
+sidebar_position: 6
 ---
 
 ```py

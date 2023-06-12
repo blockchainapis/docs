@@ -1,6 +1,7 @@
 ---
 title: InvalidPageException
 description: Thrown when you given an invalid page index during calls to responses thatgives paginated results.
+sidebar_position: 1
 ---
 
 ```py

@@ -1,6 +1,7 @@
 ---
 title: TooManyRequestsException
 description: Thrown when you are doing more request than you are allowed to the API.
+sidebar_position: 6
 ---
 
 ```py

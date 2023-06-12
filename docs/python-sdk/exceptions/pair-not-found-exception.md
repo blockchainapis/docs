@@ -1,6 +1,7 @@
 ---
 title: PairNotFoundException
 description: Thrown when you try to get some data about a pair that does not exist.
+sidebar_position: 2
 ---
 
 ```py
