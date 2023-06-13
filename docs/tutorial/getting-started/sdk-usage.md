@@ -1,5 +1,5 @@
 ---
-title: "How to use the SDK"
+title: "How to Use the SDK"
 description: "Learn how to use the Blockchain APIs SDK to do any API call"
 sidebar_position: 4
 ---

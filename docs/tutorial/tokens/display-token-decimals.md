@@ -1,8 +1,8 @@
 ---
-title: "How to get the decimals of a token"
-description: "Learn how to get the decimals of any token in any blockchain"
-sidebar_position: 1
-sidebar_label: "Get Token Decimals"
+title: "How to display a token amount in decimal form"
+description: "Learn how to convert a token from his unsigned integer form to his decimal form. And also from his unsigned integer form to decimal form"
+sidebar_position: 2
+sidebar_label: "Display Tokens in Decimal Form"
 ---
 
 Inside of any blockchain (whenever it is Ethereum, Arbitrum, Polygon...), the numbers are stored as integers.
@@ -41,5 +41,21 @@ At the end of this tutorial you will learn:
 Blockchain APIs is only returning values as unsigned integers because that is how the Blockchain is storing data. We advise you to keep
 all of the numbers as unsigned integers because it is more precise. Use only the decimal form when you want to display the number to a user.
 :::
+
+## STEP 1: Install the SDK
+
+Get the SDK for your favorite language:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs groupId="programming-language" queryString>
+    <TabItem value="python" label="Python" default>
+        <CodeBlock language="shell">
+            {`pip install blockchain-apis`}
+        </CodeBlock>
+    </TabItem>
+</Tabs>
 
 
