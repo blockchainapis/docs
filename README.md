@@ -32,3 +32,4 @@ This command generates static content into the `build` directory and can be serv
 - [ ] Remove blog
 - [ ] Add link to discord in place of blog
 - [ ] Add link to API reference (that opens in another link)
+- [ ] Change Exception documentation for the sdk-usage page because the Exception "Exception" is not thrown randomly
