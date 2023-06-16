@@ -1,0 +1,75 @@
+---
+title: get_token_decimal_form
+description: Convert a token from his unsigned integer form to his decimal form.
+sidebar_position: 12
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+def get_token_decimal_form(self, amount: int, decimals: int) -> str:
+```
+This method should be used when you want to display a token to a user.
+
+For highest precision, the implementation is made using only str.
+
+## Parameters
+
+ - [amount](#amount): The integer amount that you want to convert
+ - [decimals](#decimals): The amount of decimals that the token you are trying to convert
+has. You can use the [decimals](/docs/python-sdk/blockchain-apis/decimals)
+method in order to get the amount of decimals.
+
+## Returns
+
+<CodeBlock language="python">
+    <a href="/docs/python-sdk/models/str">str</a>
+</CodeBlock>
+
+The given amount in a decimal form.
+## Example
+
+### Usage
+
+```py
+import asyncio
+
+from BlockchainAPIsSync import BlockchainAPIsSync
+
+async def print_get_token_decimal_form():
+    # Create the BlockchainAPIsSync instance
+    # You can additionaly add an API key if you want
+    blockchain_apis_sync = BlockchainAPIsSync()
+    # Convert a token from his unsigned integer form to his decimal form.
+    get_token_decimal_form = await blockchain_apis_sync.get_token_decimal_form(
+        amount=2500000000000000000
+        decimals=18
+    )
+    print(get_token_decimal_form)
+    # We need to close our instance once we are done with BlockchainAPIs
+    await BlockchainAPIsSync.close()
+
+asyncio.run(print_get_token_decimal_form())
+```
+
+### Example response
+
+
+```json
+2.5
+```
+## Parameters detailed
+### amount
+
+The integer amount that you want to convert
+- type: `int`
+- example: `2500000000000000000`
+
+### decimals
+
+The amount of decimals that the token you are trying to convert
+has. You can use the [decimals](/docs/python-sdk/blockchain-apis/decimals)
+method in order to get the amount of decimals.
+- type: `int`
+- example: `18`
+

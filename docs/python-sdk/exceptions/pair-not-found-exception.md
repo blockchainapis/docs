@@ -18,7 +18,7 @@ the blockchain and exchange that you are interested in by calling `/exchanges/pa
 ### status_code
 
 The error code returned by the call to the API
-- type: `str`
+- type: `int`
 - example: ` 422
     `
 

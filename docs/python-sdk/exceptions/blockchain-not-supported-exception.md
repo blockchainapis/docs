@@ -1,7 +1,7 @@
 ---
 title: BlockchainNotSupportedException
 description: Thrown when an Invalid blockchain id is put during a call to the API.
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 ```py
@@ -17,7 +17,7 @@ To get the list of valid blockchain ids, call `/blockchains`
 ### status_code
 
 The error code returned by the call to the API
-- type: `str`
+- type: `int`
 - example: ` 422
     `
 

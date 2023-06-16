@@ -1,0 +1,76 @@
+---
+title: get_token_unsigned_form
+description: Convert a token from his decimal form back to his unsigned integer form (this
+sidebar_position: 13
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+```py
+def get_token_unsigned_form(self, amount: str, decimals: int) -> int:
+```
+method does the reverse of get_token_decimal_form)
+
+This method should be used when you receive an amount from a user, in order to convert his
+input.
+
+For the highest precision, the implementation only uses str
+
+## Parameters
+
+ - [amount](#amount): The amount in str format that you want to convert
+ - [decimals](#decimals): The amount of decimals that the token has. You can use the [decimals](/docs/python-sdk/blockchain-apis/decimals)
+method in order to get the amount of decimals.
+
+## Returns
+
+<CodeBlock language="python">
+    <a href="/docs/python-sdk/models/int">int</a>
+</CodeBlock>
+
+The amount converted to unsigned integer
+## Example
+
+### Usage
+
+```py
+import asyncio
+
+from BlockchainAPIsSync import BlockchainAPIsSync
+
+async def print_get_token_unsigned_form():
+    # Create the BlockchainAPIsSync instance
+    # You can additionaly add an API key if you want
+    blockchain_apis_sync = BlockchainAPIsSync()
+    # Convert a token from his decimal form back to his unsigned integer form (this
+    get_token_unsigned_form = await blockchain_apis_sync.get_token_unsigned_form(
+        amount="2.5"
+        decimals=18
+    )
+    print(get_token_unsigned_form)
+    # We need to close our instance once we are done with BlockchainAPIs
+    await BlockchainAPIsSync.close()
+
+asyncio.run(print_get_token_unsigned_form())
+```
+
+### Example response
+
+
+```json
+2500000000000000000
+```
+## Parameters detailed
+### amount
+
+The amount in str format that you want to convert
+- type: `str`
+- example: `2.5`
+
+### decimals
+
+The amount of decimals that the token has. You can use the [decimals](/docs/python-sdk/blockchain-apis/decimals)
+method in order to get the amount of decimals.
+- type: `int`
+- example: `18`
+

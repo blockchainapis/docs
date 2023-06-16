@@ -1,7 +1,7 @@
 ---
 title: TokenNotFoundException
 description: Thrown when you try to get informations on a token that does not exist inside of our database.
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 ```py
@@ -19,7 +19,7 @@ You can get a list of all of the available tokens by calling `/tokens`
 ### status_code
 
 The error code returned by the call to the API
-- type: `str`
+- type: `int`
 - example: ` 404
     `
 

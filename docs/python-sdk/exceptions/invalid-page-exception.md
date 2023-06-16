@@ -23,7 +23,7 @@ the amount of pages available.
 ### status_code
 
 The error code returned by the call to the API
-- type: `str`
+- type: `int`
 - example: ` 400
     `
 

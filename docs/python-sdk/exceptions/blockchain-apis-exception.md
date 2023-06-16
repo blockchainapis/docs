@@ -1,7 +1,7 @@
 ---
 title: BlockchainAPIsException
 description: Thrown when the API returns us an Exception
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 ```py
@@ -12,9 +12,9 @@ Thrown when the API returns us an Exception
 
 ## Params
 
-### error_code
+### status_code
 
-The error code returned by the API
+The status code returned by the API
 - type: `int`
 - example: `None`
 

@@ -1,7 +1,7 @@
 ---
 title: UnauthorizedException
 description: Thrown when you are trying to make an API request with an invalid or expiredAPI key.
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 ```py
@@ -20,7 +20,7 @@ To prevent this exception, you can:
 ### status_code
 
 The error code returned by the call to the API
-- type: `str`
+- type: `int`
 - example: ` 401
     `
 

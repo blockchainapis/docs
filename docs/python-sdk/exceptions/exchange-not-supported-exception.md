@@ -17,7 +17,7 @@ To get the list of supported exchange ids, call `/exchanges`
 ### status_code
 
 The error code returned by the call to the API
-- type: `str`
+- type: `int`
 - example: ` 422
     `
 
