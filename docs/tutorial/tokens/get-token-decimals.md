@@ -32,14 +32,99 @@ added a `decimal` variable inside of each tokens. This `decimal` variable is use
 numbers to users (like Uniswap and MetaMask). In our example above, ETH have 18 decimals point and USDC have 6, that is where all
 of these `0` come from.
 
-At the end of this tutorial you will learn:
-- How to get the decimals of a token
-- Transform a floating number like 2.45 ETH to his integer representation: `2450000000000000000`
-- Transform an unsigned representation of a number: `2450000000000000000` to his decimal representation: `2.45`
+At the end of this tutorial you will learn how to get the decimals of a token
 
 :::tip
-Blockchain APIs is only returning values as unsigned integers because that is how the Blockchain is storing data. We advise you to keep
-all of the numbers as unsigned integers because it is more precise. Use only the decimal form when you want to display the number to a user.
+If you are looking to a tutorial on how to display an amount of tokens in decimal form, follow [this tutorial](display-tokens-in-decimal-form)
 :::
 
+## Step 1: Install the SDK
 
+Get the SDK for your favorite language:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs groupId="programming-language" queryString>
+    <TabItem value="python" label="Python" default>
+        <CodeBlock language="shell">
+            {`pip install blockchain-apis`}
+        </CodeBlock>
+    </TabItem>
+</Tabs>
+
+## Step 2: Create the instance
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+# do some stuff...
+```
+:::success
+This solution works, but for better performance, you can use [Python-Async](?programming-language=async-python#step-2-create-the-instance)
+:::
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+# We need to create an async function, because we can't do async calls in main Python thread.
+async def get_price():
+    # We instanciate the Blockchain APIs instance using Python
+    # async with feature, this way we are sure that the API instance
+    # is closed at the end
+    async with BlockchainAPIs() as blockchain_apis:
+        # do some stuff...
+        pass
+
+asyncio.run(get_price())
+```
+
+</TabItem>
+</Tabs>
+
+## Step 3: Get the decimals of a token
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+
+# Get the decimals of the given token in the given blockchain
+decimals = blockchain_apis.decimals(blockchain="ethereum", token="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2")
+```
+
+Here we call the <a href="/docs/python-sdk/blockchain-apis-sync/decimals" target="_blank">decimals</a> method of the Blockchain APIs instance.
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+async def get_decimals():
+    async with BlockchainAPIs() as blockchain_apis:
+        # Get the decimals of the given token in the given blockchain
+        decimals = await blockchain_apis.decimals(blockchain=blockchain, token=token)
+
+asyncio.run(get_decimals())
+```
+
+Here we call the <a href="/docs/python-sdk/blockchain-apis/decimals" target="_blank">decimals</a> method of the Blockchain APIs instance.
+
+</TabItem>
+</Tabs>
