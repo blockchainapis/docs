@@ -1,7 +1,7 @@
 ---
 title: "How to get the decimals of a token"
 description: "Learn how to get the decimals of any token in any blockchain"
-sidebar_position: 1
+sidebar_position: 2
 sidebar_label: "Get Token Decimals"
 ---
 
@@ -128,3 +128,26 @@ Here we call the <a href="/docs/python-sdk/blockchain-apis/decimals" target="_bl
 
 </TabItem>
 </Tabs>
+
+### Method parameters
+
+#### blockchain
+
+The id of the blockchain where the token is. Here we put `ethereum` because we want the decimals of the given token on the Ethereum blockchain.
+
+:::tip
+Follow this tutorial to get the list of available blockchain ids: [Get Supported Blockchains](/docs/tutorial/getting-started/get-supported-blockchains)
+:::
+
+#### token
+
+The address of the token that we want to get the decimals of. Here we have put `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2` which is the address
+of the Wrapped Ether token.
+
+You can put any token that is supported by Blockchain APIs.
+
+:::tip
+You can get the list of supported tokens following this tutorial: [Get Tokens By Market Cap](/docs/tutorial/tokens/get-tokens-by-market-cap)
+:::
+
+

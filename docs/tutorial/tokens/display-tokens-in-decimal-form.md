@@ -1,7 +1,7 @@
 ---
 title: "How to display a token amount in his decimal form"
 description: "Learn how to convert a token from his unsigned integer form to his decimal form. And also from his unsigned integer form to decimal form"
-sidebar_position: 2
+sidebar_position: 3
 sidebar_label: "Display Tokens in Decimal Form"
 ---
 
