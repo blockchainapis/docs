@@ -170,7 +170,7 @@ blockchain_apis = BlockchainAPIsSync()
 
 # Get the decimals of the given token in the given blockchain
 decimals = blockchain_apis.decimals(blockchain="ethereum", token="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2")
-decimal_form = blockchain_apis.get_token_decimal_form(amount=amount, decimals=decimals)
+decimal_form = blockchain_apis.get_token_decimal_form(amount=2450000000000000000, decimals=decimals)
 print(f"2450000000000000000 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 in decimal is: {decimal_form} WETH")
 ```
 
@@ -230,4 +230,60 @@ In this step, we will do the reverse:
 
 We will convert `2542.42 USDC` to the unsigned integer form: `2542420000 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
 
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
 
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+
+# Get the decimals of the given token in the given blockchain
+decimals = blockchain_apis.decimals(blockchain="ethereum", token="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2")
+decimal_form = blockchain_apis.get_token_decimal_form(amount="2542.42", decimals=decimals)
+print(f"2450000000000000000 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 in decimal is: {decimal_form} WETH")
+```
+
+Here we use the utility method <a href="/docs/python-sdk/blockchain-apis-sync/get-token-unsigned-form" target="_blank">get_token_unsigned_form</a> of the Blockchain APIs instance.
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+async def to_unsigned_form(blockchain: str, token: str, decimal_amount: str, name: str):
+    async with BlockchainAPIs() as blockchain_apis:
+        # Get the amount of decimals that the token has
+        decimals = await blockchain_apis.decimals(blockchain, token)
+        # Get the unsigned integer form of the token from the amount of decimals
+        unsigned_form = blockchain_apis.get_token_unsigned_form(amount=decimal_amount, decimals=decimals)
+        print(f"{decimal_amount} {name} in unsigned integer form is: {unsigned_form} {token}")
+
+asyncio.run(to_unsigned_form("ethereum", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", "2542.42", "USDC"))
+```
+
+Here we use the utility method <a href="/docs/python-sdk/blockchain-apis/get-token-unsigned-form" target="_blank">get_token_unsigned_form</a> of the Blockchain APIs instance.
+
+</TabItem>
+</Tabs>
+
+### Method parameters
+
+#### amount
+
+The amount in decimal string that we have to convert. Here for example, we have put `2542.42`.
+
+#### decimals
+
+The decimals of the token that we got from the previous API call.
+
+### Result
+
+After calling the method, we should get the following result:
+
+```
+2542.42 USDC in unsigned integer form is: 2542420000 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
+```
