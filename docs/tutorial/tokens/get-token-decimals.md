@@ -54,7 +54,7 @@ import CodeBlock from "@theme/CodeBlock";
     </TabItem>
 </Tabs>
 
-## Step 2: Create the instance
+## Step 2: Create the Blockchain APIs instance
 
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
@@ -149,5 +149,4 @@ You can put any token that is supported by Blockchain APIs.
 :::tip
 You can get the list of supported tokens following this tutorial: [Get Tokens By Market Cap](/docs/tutorial/tokens/get-tokens-by-market-cap)
 :::
-
 

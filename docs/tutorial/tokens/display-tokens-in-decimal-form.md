@@ -58,4 +58,176 @@ import CodeBlock from "@theme/CodeBlock";
     </TabItem>
 </Tabs>
 
-## STEP 2: Convert the 
+## Step 2: Create the Blockchain APIs instance
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+# do some stuff...
+```
+:::success
+This solution works, but for better performance, you can use [Python-Async](?programming-language=async-python#step-2-create-the-instance)
+:::
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+# We need to create an async function, because we can't do async calls in main Python thread.
+async def get_price():
+    # We instanciate the Blockchain APIs instance using Python
+    # async with feature, this way we are sure that the API instance
+    # is closed at the end
+    async with BlockchainAPIs() as blockchain_apis:
+        # do some stuff...
+        pass
+
+asyncio.run(get_price())
+```
+
+</TabItem>
+</Tabs>
+
+## Step 3: Get the decimals of a token
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+
+# Get the decimals of the given token in the given blockchain
+decimals = blockchain_apis.decimals(blockchain="ethereum", token="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2")
+```
+
+Here we call the <a href="/docs/python-sdk/blockchain-apis-sync/decimals" target="_blank">decimals</a> method of the Blockchain APIs instance.
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+async def get_decimal_form():
+    async with BlockchainAPIs() as blockchain_apis:
+        # Get the decimals of the given token in the given blockchain
+        decimals = await blockchain_apis.decimals(blockchain=blockchain, token=token)
+
+asyncio.run(get_decimal_form())
+```
+
+Here we call the <a href="/docs/python-sdk/blockchain-apis/decimals" target="_blank">decimals</a> method of the Blockchain APIs instance.
+
+</TabItem>
+</Tabs>
+
+### Method parameters
+
+#### blockchain
+
+The id of the blockchain where the token is. Here we put `ethereum` because we want the decimals of the given token on the Ethereum blockchain.
+
+:::tip
+Follow this tutorial to get the list of available blockchain ids: [Get Supported Blockchains](/docs/tutorial/getting-started/get-supported-blockchains)
+:::
+
+#### token
+
+The address of the token that we want to get the decimals of. Here we have put `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2` which is the address
+of the Wrapped Ether token.
+
+You can put any token that is supported by Blockchain APIs.
+
+:::tip
+You can get the list of supported tokens following this tutorial: [Get Tokens By Market Cap](/docs/tutorial/tokens/get-tokens-by-market-cap)
+:::
+
+## Step 4: Display the token in his decimal form
+
+In this part, we will considere that we have: `2450000000000000000` WETH
+
+And we will first print this value into his decimal form: `2.45` WETH
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+
+# Get the decimals of the given token in the given blockchain
+decimals = blockchain_apis.decimals(blockchain="ethereum", token="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2")
+decimal_form = blockchain_apis.get_token_decimal_form(amount=amount, decimals=decimals)
+print(f"2450000000000000000 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 in decimal is: {decimal_form} WETH")
+```
+
+Here we use the utility method <a href="/docs/python-sdk/blockchain-apis-sync/get-token-decimal-form" target="_blank">get_token_decimal_form</a> of the Blockchain APIs instance.
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+async def get_decimal_form(blockchain: str, token: str, amount: int, name: str):
+    async with BlockchainAPIs() as blockchain_apis:
+        # Get the decimals of the token
+        decimals = await blockchain_apis.decimals(blockchain, token)
+        # Get the decimal form of the token from the amount of decimals
+        decimal_form = blockchain_apis.get_token_decimal_form(amount=amount, decimals=decimals)
+        print(f"{amount} {token} in decimal is: {decimal_form} {name}")
+
+asyncio.run(get_decimal_form("ethereum", "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", 2450000000000000000, "WETH"))
+```
+
+Here we use the utility method <a href="/docs/python-sdk/blockchain-apis/get-token-decimal-form" target="_blank">get_token_decimal_form</a> of the Blockchain APIs instance.
+
+</TabItem>
+</Tabs>
+
+### Method parameters
+
+#### amount
+
+The amount of the token that we try to convert in decimal form. Here we have put: 2450000000000000000
+
+#### decimals
+
+The amount of decimals that the token has. We got this decimal before.
+
+:::tip
+You can follow [this tutorial](/docs/tutorial/tokens/get-token-decimals) to get the decimals of a token
+:::
+
+### Result
+
+This code should print:
+
+```
+2450000000000000000 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 in decimal is: 2.45 WETH
+```
+
+### Step 5: Display the token in his unsigned integer form
+
+In the previous step, we went from `2450000000000000000` WETH to `2.45` WETH
+
+In this step, we will do the reverse:
+
+We will convert `2542.42 USDC` to the unsigned integer form: `2542420000 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
+
+
