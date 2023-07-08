@@ -170,7 +170,7 @@ blockchain_apis = BlockchainAPIsSync()
 
 # Get the decimals of the given token in the given blockchain
 decimals = blockchain_apis.decimals(blockchain="ethereum", token="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2")
-decimal_form = blockchain_apis.get_token_decimal_form(amount=amount, decimals=decimals)
+decimal_form = blockchain_apis.get_token_decimal_form(amount=2450000000000000000, decimals=decimals)
 print(f"2450000000000000000 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 in decimal is: {decimal_form} WETH")
 ```
 
