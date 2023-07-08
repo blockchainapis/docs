@@ -42,7 +42,7 @@ Blockchain APIs is only returning values as unsigned integers because that is ho
 all of the numbers as unsigned integers because it is more precise. Use only the decimal form when you want to display the number to a user.
 :::
 
-## STEP 1: Install the SDK
+## Step 1: Install the SDK
 
 Get the SDK for your favorite language:
 
