@@ -222,7 +222,7 @@ This code should print:
 2450000000000000000 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 in decimal is: 2.45 WETH
 ```
 
-### Step 5: Display the token in his unsigned integer form
+## Step 5: Display the token in his unsigned integer form
 
 In the previous step, we went from `2450000000000000000` WETH to `2.45` WETH
 
