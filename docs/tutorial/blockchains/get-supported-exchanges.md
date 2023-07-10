@@ -102,11 +102,11 @@ from blockchainapis import BlockchainAPIsSync
 
 blockchain_apis = BlockchainAPIsSync()
 
-# Get the decimals of the given token in the given blockchain
-decimals = blockchain_apis.decimals(blockchain="ethereum", token="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2")
+# Get the available exchanges for all of the blockchains
+exchanges = blockchain_apis.exchanges()
 ```
 
-Here we call the <a href="/docs/python-sdk/blockchain-apis-sync/decimals" target="_blank">decimals</a> method of the Blockchain APIs instance.
+Here we call the <a href="/docs/python-sdk/blockchain-apis-sync/exchanges" target="_blank">exchanges</a> method of the Blockchain APIs instance.
 
 </TabItem>
 <TabItem value="async-python" label="Python-Async">
@@ -116,38 +116,67 @@ import asyncio
 
 from blockchainapis import BlockchainAPIs
 
-async def get_decimals():
+async def get_exchanges():
     async with BlockchainAPIs() as blockchain_apis:
-        # Get the decimals of the given token in the given blockchain
-        decimals = await blockchain_apis.decimals(blockchain=blockchain, token=token)
+        # Get the list of available exchanges for all of the blockchains
+        exchanges = await blockchain_apis.exchanges()
 
-asyncio.run(get_decimals())
+asyncio.run(get_exchanges())
 ```
 
-Here we call the <a href="/docs/python-sdk/blockchain-apis/decimals" target="_blank">decimals</a> method of the Blockchain APIs instance.
+Here we call the <a href="/docs/python-sdk/blockchain-apis/exchanges" target="_blank">exchanges</a> method of the Blockchain APIs instance.
 
 </TabItem>
 </Tabs>
 
 ### Method parameters
 
-#### blockchain
+#### page (optional)
 
-The id of the blockchain where the token is. Here we put `ethereum` because we want the decimals of the given token on the Ethereum blockchain.
-
-:::tip
-Follow this tutorial to get the list of available blockchain ids: [Get Supported Blockchains](/docs/tutorial/getting-started/get-supported-blockchains)
-:::
-
-#### token
-
-The address of the token that we want to get the decimals of. Here we have put `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2` which is the address
-of the Wrapped Ether token.
-
-You can put any token that is supported by Blockchain APIs.
+The page of the returned value.
 
 :::tip
-You can get the list of supported tokens following this tutorial: [Get Tokens By Market Cap](/docs/tutorial/tokens/get-tokens-by-market-cap)
+This value can be ignored for this version of the API
 :::
 
+#### blockchain (optional)
 
+The id of the blockchain from which you want to get the exchanges.
+
+Here we didn't have put any blockchain id, here is how it would have looked like if we put the `ethereum` blockchain id:
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+
+# Get the available exchanges for the ethereum blockchain
+exchanges = blockchain_apis.exchanges(blockchain="ethereum")
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+async def get_exchanges():
+    async with BlockchainAPIs() as blockchain_apis:
+        # Get the list of available exchanges for the ethereum blockchain
+        exchanges = await blockchain_apis.exchanges(blockchain="ethereum")
+
+asyncio.run(get_exchanges())
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+You can follow this tutorial: [Get Supported Blockchains](/docs/tutorial/blockchains/get-supported-blockchains) in order
+to get the id of all of the supported blockchains of the API.
+:::
