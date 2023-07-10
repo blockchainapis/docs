@@ -38,6 +38,10 @@ At the end of the tutorial, you should get a table like this:
 | sushiswap_ethereum        | ethereum        | SushiSwap       | https://www.sushi.com/swap                    |
 | uniswapv2_ethereum        | ethereum        | Uniswap V2      | https://app.uniswap.org/                      |
 
+:::tip
+If you are just looking for the code, you can find it inside of the [examples](https://github.com/blockchainapis/blockchain-apis-examples/tree/master/examples/3-get-supported-exchanges) repository.
+:::
+
 ## Step 1: Install the SDK
 
 Get the SDK for your favorite language:
@@ -197,6 +201,24 @@ class Exchanges
     data: List[Exchange]
 ```
 
+In this structure, you have:
+- `page`: The current page that we are at (this value will always be `1` for this version of the API)
+- `total_pages`: The total amount of pages (this value will always be `1` for this version of the API)
+
+What really interest us in here, is the `data` List, it contains the list of [Exchange](/docs/python-sdk/models/exchange) model. This
+model contains all of the informations that we want to retrieve on all exchanges.
+
+Here is the [Exchange](/docs/python-sdk/models/exchange) model structure:
+
+```py
+@dataclass(slots=True, frozen=True)
+class Exchange
+    exchange: str
+    blockchain: str
+    name: str
+    url: str
+```
+
 </TabItem>
 <TabItem value="async-python" label="Python-Async">
 
@@ -211,11 +233,25 @@ class Exchanges
     data: List[Exchange]
 ```
 
-</TabItem>
-</Tabs>
-
 In this structure, you have:
 - `page`: The current page that we are at (this value will always be `1` for this version of the API)
 - `total_pages`: The total amount of pages (this value will always be `1` for this version of the API)
+
+What really interest us in here, is the `data` List, it contains the list of [Exchange](/docs/python-sdk/models/exchange) model. This
+model contains all of the informations that we want to retrieve on all exchanges.
+
+Here is the [Exchange](/docs/python-sdk/models/exchange) model structure:
+
+```py
+@dataclass(slots=True, frozen=True)
+class Exchange
+    exchange: str
+    blockchain: str
+    name: str
+    url: str
+```
+
+</TabItem>
+</Tabs>
 
 
