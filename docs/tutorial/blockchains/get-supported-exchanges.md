@@ -218,7 +218,47 @@ class Exchange
     name: str
     url: str
 ```
+Once you have the result, you can create a method to pretty-print it:
 
+```py
+def pretty_print_exchanges(exchanges: Exchanges):
+    """Allow to pretty print exchanges in a nice array
+
+    :param exchanges: The exchanges that we got from the API and that we are trying to print
+    :type exchanges: Exchanges
+    """
+    widths = [25, 15, 15, 45]
+    print(f'| {"Exchange ID":<{widths[0]}} | {"Blockchain ID":<{widths[1]}} | {"Exchange Name":<{widths[2]}} | {"Exchange URL":<{widths[3]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} |')
+    # Loop through the data
+    for exchange in exchanges.data:
+        # First is the exchange ID
+        # Second is the blockchain ID
+        # Third is the name of the exchange
+        # Fourth is the url of the exchange
+        print(f'| {exchange.exchange:<{widths[0]}} | {exchange.blockchain:<{widths[1]}} | {exchange.name:<{widths[2]}} | {exchange.url:<{widths[3]}} |')
+```
+
+And then call the `pretty_print_exchanges` function:
+```py
+from blockchainapis import BlockchainAPIsSync
+from blockchainapis.models import Exchanges
+
+
+def pretty_print_exchanges(exchanges: Exchanges):
+    widths = [25, 15, 15, 45]
+    print(f'| {"Exchange ID":<{widths[0]}} | {"Blockchain ID":<{widths[1]}} | {"Exchange Name":<{widths[2]}} | {"Exchange URL":<{widths[3]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} |')
+    for exchange in exchanges.data:
+        print(f'| {exchange.exchange:<{widths[0]}} | {exchange.blockchain:<{widths[1]}} | {exchange.name:<{widths[2]}} | {exchange.url:<{widths[3]}} |')
+
+
+blockchain_apis = BlockchainAPIsSync()
+exchanges = blockchain_apis.exchanges()
+# highlight-next-line
+pretty_print_exchanges(exchanges)
+
+```
 </TabItem>
 <TabItem value="async-python" label="Python-Async">
 
@@ -249,6 +289,51 @@ class Exchange
     blockchain: str
     name: str
     url: str
+```
+
+Once you have the result, you can create a method to pretty-print it:
+
+```py
+def pretty_print_exchanges(exchanges: Exchanges):
+    """Allow to pretty print exchanges in a nice array
+
+    :param exchanges: The exchanges that we got from the API and that we are trying to print
+    :type exchanges: Exchanges
+    """
+    widths = [25, 15, 15, 45]
+    print(f'| {"Exchange ID":<{widths[0]}} | {"Blockchain ID":<{widths[1]}} | {"Exchange Name":<{widths[2]}} | {"Exchange URL":<{widths[3]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} |')
+    # Loop through the data
+    for exchange in exchanges.data:
+        # First is the exchange ID
+        # Second is the blockchain ID
+        # Third is the name of the exchange
+        # Fourth is the url of the exchange
+        print(f'| {exchange.exchange:<{widths[0]}} | {exchange.blockchain:<{widths[1]}} | {exchange.name:<{widths[2]}} | {exchange.url:<{widths[3]}} |')
+```
+
+And then call the `pretty_print_exchanges` function:
+```py
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+from blockchainapis.models import Exchanges
+
+def pretty_print_exchanges(exchanges: Exchanges):
+    widths = [25, 15, 15, 45]
+    print(f'| {"Exchange ID":<{widths[0]}} | {"Blockchain ID":<{widths[1]}} | {"Exchange Name":<{widths[2]}} | {"Exchange URL":<{widths[3]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} |')
+    for exchange in exchanges.data:
+        print(f'| {exchange.exchange:<{widths[0]}} | {exchange.blockchain:<{widths[1]}} | {exchange.name:<{widths[2]}} | {exchange.url:<{widths[3]}} |')
+
+
+async def get_exchanges():
+    async with BlockchainAPIs() as blockchain_apis:
+        exchanges = await blockchain_apis.exchanges()
+        # highlight-next-line
+        pretty_print_exchanges(exchanges)
+
+asyncio.run(get_exchanges())
 ```
 
 </TabItem>
