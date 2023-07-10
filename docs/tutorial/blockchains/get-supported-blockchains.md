@@ -1,7 +1,7 @@
 ---
 title: "Get Supported Blockchains"
 description: "Learn how to get the list of supported blockchains by the API"
-sidebar_position: 3
+sidebar_position: 1
 keywords:
 - blockchain
 - ethereum

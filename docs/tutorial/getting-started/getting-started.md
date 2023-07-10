@@ -141,7 +141,7 @@ Here we call the <a href="/docs/python-sdk/blockchain-apis/amount-out" target="_
 The id of the blockchain from which we are willing to get the price. Here we have put `ethereum` because we want the price
 of selling 1 ETH for USDC on the `ethereum` blockchain.
 
-Follow this tutorial to get the list of available blockchains: [Get Supported Blockchains](/docs/tutorial/getting-started/get-supported-blockchains)
+Follow this tutorial to get the list of available blockchains: [Get Supported Blockchains](/docs/tutorial/blockchains/get-supported-blockchains)
 
 #### tokenIn
 
