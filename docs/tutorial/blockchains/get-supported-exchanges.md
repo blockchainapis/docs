@@ -339,4 +339,6 @@ asyncio.run(get_exchanges())
 </TabItem>
 </Tabs>
 
+This code should get all of the exchanges and print them in your terminal in a pretty-print format.
 
+Feel free to use the `Exchange ID` for your next API calls, for example [to get the list of pairs](/docs/tutorial/pairs/get-blockchain-pairs)
