@@ -180,3 +180,42 @@ asyncio.run(get_exchanges())
 You can follow this tutorial: [Get Supported Blockchains](/docs/tutorial/blockchains/get-supported-blockchains) in order
 to get the id of all of the supported blockchains of the API.
 :::
+
+## Step 4: Retrieve the result
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+The <a href="/docs/python-sdk/blockchain-apis-sync/exchanges" target="_blank">exchanges</a> method returns an <a href="/docs/python-sdk/models/exchanges" target="_blank">Exchanges</a> model.
+
+Here is his structure:
+```py
+@dataclass(slots=True, frozen=True)
+class Exchanges
+    page: int
+    total_pages: int
+    data: List[Exchange]
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+The <a href="/docs/python-sdk/blockchain-apis/exchanges" target="_blank">exchanges</a> method returns an <a href="/docs/python-sdk/models/exchanges" target="_blank">Exchanges</a> model.
+
+Here is his structure:
+```py
+@dataclass(slots=True, frozen=True)
+class Exchanges
+    page: int
+    total_pages: int
+    data: List[Exchange]
+```
+
+</TabItem>
+</Tabs>
+
+In this structure, you have:
+- `page`: The current page that we are at (this value will always be `1` for this version of the API)
+- `total_pages`: The total amount of pages (this value will always be `1` for this version of the API)
+
+
