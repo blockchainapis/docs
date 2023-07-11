@@ -68,4 +68,6 @@ asyncio.run(get_exchanges())
 </TabItem>
 </Tabs>
 
+## Step 3: Get pairs
+
 
