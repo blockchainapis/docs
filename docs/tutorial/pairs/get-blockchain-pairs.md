@@ -244,3 +244,199 @@ asyncio.run(get_pairs())
 
 </TabItem>
 </Tabs>
+
+## Step 4: Retrieve result
+
+### The returned model
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+The <a href="/docs/python-sdk/blockchain-apis-sync/pairs" target="_blank">pairs</a> method returns a <a href="/docs/python-sdk/models/pairs" target="_blank">Pairs</a> model.
+
+Here is his structure:
+```py
+@dataclass(slots=True, frozen=True)
+class Pairs
+    page: int
+    total_pages: int
+    data: List[Pair]
+```
+
+In this structure, you have:
+- `page`: The current page that we are at
+- `total_pages`: The total amount of pages. If you want all of the pairs, you can use this value to loop to get all
+                 available pages.
+- `data`: Contains the List of [Pair](/docs/python-sdk/models/pair) for the given page.
+
+The [Pair](/docs/python-sdk/models/pair) model contains all of the informations that are required on a specific pair. Here is his structure:
+
+```py
+@dataclass(slots=True, frozen=True)
+class Pair
+    blockchain: str
+    exchange: str
+    token0: str
+    token1: str
+    fee: int
+```
+
+#### blockchain
+
+The id of the blockchain that the pair is.
+
+#### exchange
+
+The id of the exchange that the pair is.
+
+#### token0
+
+The first token of the pair.
+
+#### token1
+
+The second token of the pair.
+
+#### fee
+
+The fee that is given to liquidity providers on every trade on this pair.
+
+This fee is written in 100000 of percent, for example: 1000 fee means 1% fee.
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+The <a href="/docs/python-sdk/blockchain-apis/pairs" target="_blank">pairs</a> method returns a <a href="/docs/python-sdk/models/pairs" target="_blank">Pairs</a> model.
+
+Here is his structure:
+```py
+@dataclass(slots=True, frozen=True)
+class Pairs
+    page: int
+    total_pages: int
+    data: List[Pair]
+```
+
+In this structure, you have:
+- `page`: The current page that we are at
+- `total_pages`: The total amount of pages. If you want all of the pairs, you can use this value to loop to get all
+                 available pages.
+- `data`: Contains the List of [Pair](/docs/python-sdk/models/pair) for the given page.
+
+The [Pair](/docs/python-sdk/models/pair) model contains all of the informations that are required on a specific pair. Here is his structure:
+
+```py
+@dataclass(slots=True, frozen=True)
+class Pair
+    blockchain: str
+    exchange: str
+    token0: str
+    token1: str
+    fee: int
+```
+
+#### blockchain
+
+The id of the blockchain that the pair is.
+
+#### exchange
+
+The id of the exchange that the pair is.
+
+#### token0
+
+The first token of the pair.
+
+#### token1
+
+The second token of the pair.
+
+#### fee
+
+The fee that is given to liquidity providers on every trade on this pair.
+
+This fee is written in 100000 of percent, for example: 1000 fee means 1% fee.
+
+</TabItem>
+</Tabs>
+
+### Print the result
+
+In the code below, we will print all informations on the first pair returned:
+
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+
+pairs = blockchain_apis.pairs()
+
+# There are 100 results per page by default we start at page 1
+print(f"Current page: {pairs.page}")
+# We print the total amount of pages:
+print(f"Total pages: {pairs.total_pages}")
+# TIP: You can choose which page you want to get by doing the following:
+# pairs = blockchain_apis.pairs(page=2)
+
+# Now we get the first pair available:
+pair = pairs.data[0]
+print("First pair:")
+# The id of the blockchain on which the pair is
+print(f"Blockchain ID of pair: {pair.blockchain}")
+# The id of the exchange on which the pair is
+print(f"Exchange ID of pair: {pair.exchange}")
+# A pair contains two tokens: token0 and token1
+# In order to be able to execute a trade in any of these pairs, you will need
+# to own some token0 or token1.
+print(f"Token0 of pair: {pair.token0}")
+print(f"Token1 of pair: {pair.token1}")
+# The fee taken by liquidity providers during a trade
+# The fee is written in 100000 of percents (for example: 1000 is 1%)
+print(f"fee: {pair.fee}")
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+
+async def get_pairs():
+    async with BlockchainAPIs() as blockchain_apis:
+        pairs = await blockchain_apis.pairs()
+
+        # There are 100 results per page by default we start at page 1
+        print(f"Current page: {pairs.page}")
+        # We print the total amount of pages:
+        print(f"Total pages: {pairs.total_pages}")
+        # TIP: You can choose which page you want to get by doing the following:
+        # pairs = await blockchain_apis.pairs(page=2)
+
+        # Now we get the first pair available:
+        pair = pairs.data[0]
+        print("First pair:")
+        # The id of the blockchain on which the pair is
+        print(f"Blockchain ID of pair: {pair.blockchain}")
+        # The id of the exchange on which the pair is
+        print(f"Exchange ID of pair: {pair.exchange}")
+        # A pair contains two tokens: token0 and token1
+        # In order to be able to execute a trade in any of these pairs, you will need
+        # to own some token0 or token1.
+        print(f"Token0 of pair: {pair.token0}")
+        print(f"Token1 of pair: {pair.token1}")
+        # The fee taken by liquidity providers during a trade
+        # The fee is written in 100000 of percents (for example: 1000 is 1%)
+        print(f"fee: {pair.fee}")
+
+asyncio.run(get_pairs())
+```
+
+</TabItem>
+</Tabs>
