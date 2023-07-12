@@ -53,7 +53,7 @@ import asyncio
 from blockchainapis import BlockchainAPIs
 
 # We need to create an async function, because we can't do async calls in main Python thread.
-async def get_price():
+async def get_tokens_by_market_cap(blockchain: str):
     # We instanciate the Blockchain APIs instance using Python
     # async with feature, this way we are sure that the API instance
     # is closed at the end
@@ -61,7 +61,7 @@ async def get_price():
         # do some stuff...
         pass
 
-asyncio.run(get_price())
+asyncio.run(get_tokens_by_market_cap("ethereum"))
 ```
 
 </TabItem>
@@ -69,4 +69,38 @@ asyncio.run(get_price())
 
 ## Step 3: Get the list of tokens ordered by market cap
 
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
 
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+
+# Make the call to blockchain_apis in order to get the tokens
+# of the ethereum blockchain
+tokens = blockchain_apis.tokens(blockchain="ethereum")
+```
+
+Here we call the <a href="/docs/python-sdk/blockchain-apis-sync/tokens" target="_blank">tokens</a> method of the Blockchain APIs instance.
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+async def get_tokens_by_market_cap(blockchain: str):
+    async with BlockchainAPIs() as blockchain_apis:
+        # Make the call to blockchain_apis to get the tokens
+        tokens = await blockchain_apis.tokens(blockchain=blockchain)
+
+asyncio.run(get_tokens_by_market_cap("ethereum"))
+```
+
+Here we call the <a href="/docs/python-sdk/blockchain-apis/tokens" target="_blank">tokens</a> method of the Blockchain APIs instance.
+
+</TabItem>
+</Tabs>
