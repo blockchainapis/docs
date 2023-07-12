@@ -280,3 +280,126 @@ We use the Python built-in `Decimal` class to maximize precision.
 
 ### Print the result
 
+In order to print the result, we built a pretty-print function that will print the result inside
+of an array:
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from typing import List
+
+from blockchainapis.models import Token
+
+def pretty_print_tokens(tokens: List[Token]):
+    """Print the given tokens inside of an array
+
+    :param token: The list of tokens to print
+    :type token: Token
+    """
+    widths = [42, 15, 8, 24]
+    print(f'| {"Token Address":<{widths[0]}} | {"Blockchain ID":<{widths[1]}} | {"Decimals":<{widths[2]}} | {"Market Cap":<{widths[3]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} |')
+    for token in tokens:
+        print(f'| {token.address:<{widths[0]}} | {token.blockchain:<{widths[1]}} | {token.decimals:<{widths[2]}} | {token.market_cap:<{widths[3]}} |')
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+from typing import List
+
+from blockchainapis.models import Token
+
+def pretty_print_tokens(tokens: List[Token]):
+    """Print the given tokens inside of an array
+
+    :param token: The list of tokens to print
+    :type token: Token
+    """
+    widths = [42, 15, 8, 24]
+    print(f'| {"Token Address":<{widths[0]}} | {"Blockchain ID":<{widths[1]}} | {"Decimals":<{widths[2]}} | {"Market Cap":<{widths[3]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} |')
+    for token in tokens:
+        print(f'| {token.address:<{widths[0]}} | {token.blockchain:<{widths[1]}} | {token.decimals:<{widths[2]}} | {token.market_cap:<{widths[3]}} |')
+```
+
+</TabItem>
+</Tabs>
+
+Then we add a call to our pretty print method inside of our code:
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from typing import List
+
+from blockchainapis import BlockchainAPIsSync
+from blockchainapis.models import Token
+
+def pretty_print_tokens(tokens: List[Token]):
+    widths = [42, 15, 8, 24]
+    print(f'| {"Token Address":<{widths[0]}} | {"Blockchain ID":<{widths[1]}} | {"Decimals":<{widths[2]}} | {"Market Cap":<{widths[3]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} |')
+    for token in tokens:
+        print(f'| {token.address:<{widths[0]}} | {token.blockchain:<{widths[1]}} | {token.decimals:<{widths[2]}} | {token.market_cap:<{widths[3]}} |')
+
+blockchain_apis = BlockchainAPIsSync()
+
+tokens = blockchain_apis.tokens(blockchain="ethereum")
+
+# Print the current page that we are at.
+print(f"Current page: {tokens.page}")
+
+# Print the total amount of pages:
+print(f"Total pages: {tokens.total_pages}")
+
+# tokens.data contains the list of tokens, we use the pretty_print_token
+# method in order to pretty print the top 10 tokens
+# highlight-next-line
+pretty_print_tokens(tokens.data[:10])
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from typing import List
+
+from blockchainapis import BlockchainAPIs
+from blockchainapis.models import Token
+
+def pretty_print_tokens(tokens: List[Token]):
+    widths = [42, 15, 8, 24]
+    print(f'| {"Token Address":<{widths[0]}} | {"Blockchain ID":<{widths[1]}} | {"Decimals":<{widths[2]}} | {"Market Cap":<{widths[3]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} |')
+    for token in tokens:
+        print(f'| {token.address:<{widths[0]}} | {token.blockchain:<{widths[1]}} | {token.decimals:<{widths[2]}} | {token.market_cap:<{widths[3]}} |')
+
+
+async def get_tokens_by_market_cap(blockchain: str):
+    async with BlockchainAPIs() as blockchain_apis:
+        tokens = await blockchain_apis.tokens(blockchain=blockchain)
+        
+        # Print the current page that we are at.
+        print(f"Current page: {tokens.page}")
+
+        # Print the total amount of pages:
+        print(f"Total pages: {tokens.total_pages}")
+
+        # tokens.data contains the list of tokens, we use the pretty_print_token
+        # method in order to pretty print the top 10 tokens
+        # highlight-next-line
+        pretty_print_tokens(tokens.data[:10])
+
+asyncio.run(get_tokens_by_market_cap("ethereum"))
+```
+
+</TabItem>
+</Tabs>
+
+
