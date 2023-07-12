@@ -165,4 +165,118 @@ If you want to get the list of all of the supported blockchain IDs by Blockchain
 this tutorial: [Get Supported Blockchains](/docs/tutorial/blockchains/get-supported-blockchains)
 :::
 
+## Step 4: Retrieve result
+
+### The returned model
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+The <a href="/docs/python-sdk/blockchain-apis-sync/tokens" target="_blank">tokens</a> method returns a <a href="/docs/python-sdk/models/tokens" target="_blank">Tokens</a> model.
+
+Here is his structure:
+```py
+@dataclass(slots=True, frozen=True)
+class Tokens
+    page: int
+    total_pages: int
+    data: List[Token]
+```
+
+In this structure, you have:
+- `page`: The current page that we are at
+- `total_pages`: The total amount of pages. If you want all of the tokens, you can use this value to loop to get all
+                 available pages of tokens.
+- `data`: Contains the List of [Token](/docs/python-sdk/models/token) for the given page.
+
+The [Token](/docs/python-sdk/models/token) model contains all of the informations that are required on a specific token. Here is his structure:
+
+```py
+@dataclass(slots=True, frozen=True)
+class Token
+    blockchain: str
+    address: str
+    decimals: int
+    market_cap: Decimal
+```
+
+#### blockchain
+
+The id of the blockchain that the pair is.
+
+#### address
+
+The address of the pair
+
+#### decimals
+
+The amount of decimals that the token has
+
+#### market_cap
+
+The market cap of the pair. It the market cap in USDT, and is written in Decimal format.
+
+:::info
+The market_cap is the only value returned by Blockchain APIs that is in a `Decimal` format.
+
+We use the Python built-in `Decimal` class to maximize precision.
+:::
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+The <a href="/docs/python-sdk/blockchain-apis/tokens" target="_blank">tokens</a> method returns a <a href="/docs/python-sdk/models/tokens" target="_blank">Tokens</a> model.
+
+Here is his structure:
+```py
+@dataclass(slots=True, frozen=True)
+class Tokens
+    page: int
+    total_pages: int
+    data: List[Token]
+```
+
+In this structure, you have:
+- `page`: The current page that we are at
+- `total_pages`: The total amount of pages. If you want all of the tokens, you can use this value to loop to get all
+                 available pages of tokens.
+- `data`: Contains the List of [Token](/docs/python-sdk/models/token) for the given page.
+
+The [Token](/docs/python-sdk/models/token) model contains all of the informations that are required on a specific token. Here is his structure:
+
+```py
+@dataclass(slots=True, frozen=True)
+class Token
+    blockchain: str
+    address: str
+    decimals: int
+    market_cap: Decimal
+```
+
+#### blockchain
+
+The id of the blockchain that the pair is.
+
+#### address
+
+The address of the pair
+
+#### decimals
+
+The amount of decimals that the token has
+
+#### market_cap
+
+The market cap of the pair. It the market cap in USDT, and is written in Decimal format.
+
+:::info
+The market_cap is the only value returned by Blockchain APIs that is in a `Decimal` format.
+
+We use the Python built-in `Decimal` class to maximize precision.
+:::
+
+</TabItem>
+</Tabs>
+
+### Print the result
 
