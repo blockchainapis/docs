@@ -129,7 +129,7 @@ from blockchainapis import BlockchainAPIsSync
 blockchain_apis = BlockchainAPIsSync()
 
 # Get second page of all pairs available in Blockchain APIs
-exchanges = blockchain_apis.exchanges(page=2)
+pairs = blockchain_apis.pairs(page=2)
 ```
 
 </TabItem>
@@ -143,7 +143,7 @@ from blockchainapis import BlockchainAPIs
 async def get_pairs():
     async with BlockchainAPIs() as blockchain_apis:
         # Get second page of all pairs available in Blockchain APIs
-        exchanges = await blockchain_apis.pairs(page=2)
+        pairs = await blockchain_apis.pairs(page=2)
 
 asyncio.run(get_pairs())
 ```
