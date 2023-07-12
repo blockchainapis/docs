@@ -440,3 +440,12 @@ asyncio.run(get_pairs())
 
 </TabItem>
 </Tabs>
+
+:::tip
+`token0` and `token1` are the two tokens of the pair. It means that in this pair you can sell a
+certain amount of `token0` to get a certain amount of `token1` and sell a certain amount of `token1`
+to get `token0`.
+
+If you wish to know the exact output that you will get for exchanging two tokens, you can follow
+the following tutorial: [Trade Simulations](/docs/tutorial/pairs/trade-simulation)
+:::
