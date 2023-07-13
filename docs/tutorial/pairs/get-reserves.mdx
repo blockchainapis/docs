@@ -392,3 +392,22 @@ asyncio.run(get_reserves("ethereum", "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
 
 </TabItem>
 </Tabs>
+
+The code above should give you the following result:
+
+| Blockchain ID | Exchange ID               | Token0 Address                             | Token1 Address                             | Reserve0                | Reserve1                |
+| ------------- | ------------------------- | ------------------------------------------ | ------------------------------------------ | ----------------------- | ----------------------- |
+| ethereum      | dooar_ethereum            | 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 | 353310944060117087963   | 657397377424            |
+| ethereum      | elk_finance_ethereum      | 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 | 130945104043365713      | 241852208               |
+| ethereum      | pancakeswap_ethereum      | 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 | 67335076676947019964    | 126666448011            |
+| ethereum      | plasmafinance_ethereum    | 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 | 58169985497074757       | 99706454                |
+| ethereum      | shibaswap_ethereum        | 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 | 83273598349475533481    | 157034392609            |
+| ethereum      | sushiswap_ethereum        | 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 | 4607125049631024107699  | 8679204261814           |
+| ethereum      | uniswapv2_ethereum        | 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 | 14522622427400273282587 | 27353329269608
+
+You should get different results depending on the time that you launch the program.
+
+:::tip
+In our examples we only worked with the pair WETH-USDC, but Blockchain APIs supports more than 1,000,000 pairs from which you
+can get the reserves. In order to get the list of available pairs you can follow this tutorial: [Get Blockchain Pairs](/docs/tutorial/pairs/get-blockchain-pairs)
+:::
