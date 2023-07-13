@@ -108,4 +108,83 @@ Here we call the <a href="/docs/python-sdk/blockchain-apis/reserves" target="_bl
 </TabItem>
 </Tabs>
 
+### Method parameters
+
+#### blockchain
+
+The id of the blockchain that you want to get the reserves from.
+
+This is a mandatory parameter. In the given example, we have put the id `ethereum`.
+
+:::tip
+You can get the list of valid blockchain ids by following this tutorial: [Get Supported Blockchains](/docs/tutorial/blockchains/get-supported-blockchains)
+:::
+
+#### token0
+
+The address of one of the two tokens of the pair from which you want to get the liquidity from.
+
+Here we have put the token: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2` which correspond
+to the Wrapped Ethereum token.
+
+#### Token1
+
+The address of the other token of the pair from which you want to get the liquidity.
+
+Here we have put the token: `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48` which correspond
+to the USDC token.
+
+#### Exchange (optional)
+
+The id of the exchange from which you want get the reserves. This parameter is optional.
+
+For example if you wanted to get the reserves of the pair WETH-USDC on UniswapV2:
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+
+# Get reserves for WETH-USDC pair on blockchain ethereum
+reserves = blockchain_apis.reserves(blockchain="ethereum",
+                                    token0="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                                    token1="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                                    # highlight-next-line
+                                    exchange="uniswapv2_ethereum")
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+async def get_reserves(blockchain: str, token0: str, token1: str):
+    async with BlockchainAPIs() as blockchain_apis:
+        # Do the API call in order to get the reserve of token0 and
+        # token1 in blockchain blockchain and exchange uniswapv2_ethereum
+        reserves = await blockchain_apis.reserves(blockchain=blockchain,
+                                                  token0=token0,
+                                                  token1=token1,
+                                                  # highlight-next-line
+                                                  exchange="uniswapv2_ethereum")
+
+# Get the reserves for WETH-USDC on the ethereum blockchain
+asyncio.run(get_reserves("ethereum", "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"))
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+You can get the list of valid exchange ids following this tutorial: [Get Supported Exchanges](/docs/tutorial/blockchains/get-supported-exchanges)
+:::
+
+## Step 4: Gather result
+
 
