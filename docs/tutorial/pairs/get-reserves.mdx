@@ -54,7 +54,7 @@ import asyncio
 from blockchainapis import BlockchainAPIs
 
 # We need to create an async function, because we can't do async calls in main Python thread.
-async def get_exchanges():
+async def get_reserves(blockchain: str, token0: str, token1: str):
     # We instanciate the Blockchain APIs instance using Python
     # async with feature, this way we are sure that the API instance
     # is closed at the end
@@ -62,12 +62,50 @@ async def get_exchanges():
         # do some stuff...
         pass
 
-asyncio.run(get_exchanges())
+asyncio.run(get_reserves("ethereum", "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"))
 ```
 
 </TabItem>
 </Tabs>
 
 ## Step 3: Get the reserves
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+
+# Get reserves for WETH-USDC pair on blockchain ethereum
+# highlight-next-line
+reserves = blockchain_apis.reserves(blockchain="ethereum", token0="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", token1="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48")
+```
+
+Here we call the <a href="/docs/python-sdk/blockchain-apis-sync/reserves" target="_blank">reserves</a> method of the Blockchain APIs instance.
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+async def get_reserves(blockchain: str, token0: str, token1: str):
+    async with BlockchainAPIs() as blockchain_apis:
+        # Do the API call in order to get the reserves
+        # highlight-next-line
+        reserves = await blockchain_apis.reserves(blockchain=blockchain, token0=token0, token1=token1)
+
+# Get the reserves for WETH-USDC on the ethereum blockchain
+asyncio.run(get_reserves("ethereum", "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"))
+```
+
+Here we call the <a href="/docs/python-sdk/blockchain-apis/reserves" target="_blank">reserves</a> method of the Blockchain APIs instance.
+
+</TabItem>
+</Tabs>
 
 
