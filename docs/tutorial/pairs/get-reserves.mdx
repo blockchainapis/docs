@@ -4,4 +4,68 @@ description: "Learn how to get the reserves inside of a liquidity pool the faste
 sidebar_position: 2
 ---
 
+Liquidity pools have a certain amount of tokens in reserve to allow other people to trade with
+these tokens.
+
+Knowing this reserve can allow you to do these things:
+- Compute the price of a certain token depending on another
+- Verify if there is enough liqudity to make the pair worth trading
+- Simulate the amount of tokens that you will get for a certain exchange
+
+The goal of this tutorial is to teach you how to get the reserves of any pair using Blockchain APIs.
+
+## Step 1: Install the SDK
+
+Get the SDK for your favorite language:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+<Tabs groupId="programming-language" queryString>
+    <TabItem value="python" label="Python" default>
+        <CodeBlock language="shell">
+            {`pip install blockchain-apis`}
+        </CodeBlock>
+    </TabItem>
+</Tabs>
+
+## Step 2: Create the Blockchain APIs instance
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+# do some stuff...
+```
+:::success
+This solution works, but for better performance, you can use [Python-Async](?programming-language=async-python#step-2-create-the-instance)
+:::
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+# We need to create an async function, because we can't do async calls in main Python thread.
+async def get_exchanges():
+    # We instanciate the Blockchain APIs instance using Python
+    # async with feature, this way we are sure that the API instance
+    # is closed at the end
+    async with BlockchainAPIs() as blockchain_apis:
+        # do some stuff...
+        pass
+
+asyncio.run(get_exchanges())
+```
+
+</TabItem>
+</Tabs>
+
 
