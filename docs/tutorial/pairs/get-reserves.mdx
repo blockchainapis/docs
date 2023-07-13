@@ -188,3 +188,207 @@ You can get the list of valid exchange ids following this tutorial: [Get Support
 ## Step 4: Gather result
 
 
+### The returned model
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+The <a href="/docs/python-sdk/blockchain-apis-sync/reserves" target="_blank">reserves</a> method returns a List of <a href="/docs/python-sdk/models/Reserve" target="_blank">Reserve</a> model.
+
+Here is the structure of the <a href="/docs/python-sdk/models/Reserve" target="_blank">Reserve</a> model:
+```py
+@dataclass(slots=True, frozen=True)
+class Reserve
+    blockchain: str
+    exchange: str
+    token0: str
+    token1: str
+    reserve0: int
+    reserve1: int
+```
+
+#### blockchain
+
+The id of the blockchain that the pair is.
+
+#### exchange
+
+The id of the exchange in which the token has the given reserves
+
+#### token0
+
+The address of the token0. It is the same address as the token0 that
+you have put during your `reserves` call.
+
+#### token1
+
+The address of the token1. It is the same address as the token1 that you
+have put during your `reserves` call.
+
+#### reserve0
+
+The reserve of `token0` that is inside of the pair for the given exchange id.
+
+#### reserve1
+
+The reserve of `token1` that is inside of the pair for the given exchange id.
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+The <a href="/docs/python-sdk/blockchain-apis/reserves" target="_blank">reserves</a> method returns a List of <a href="/docs/python-sdk/models/Reserve" target="_blank">Reserve</a> model.
+
+Here is the structure of the <a href="/docs/python-sdk/models/Reserve" target="_blank">Reserve</a> model:
+```py
+@dataclass(slots=True, frozen=True)
+class Reserve
+    blockchain: str
+    exchange: str
+    token0: str
+    token1: str
+    reserve0: int
+    reserve1: int
+```
+
+#### blockchain
+
+The id of the blockchain that the pair is.
+
+#### exchange
+
+The id of the exchange in which the token has the given reserves
+
+#### token0
+
+The address of the token0. It is the same address as the token0 that
+you have put during your `reserves` call.
+
+#### token1
+
+The address of the token1. It is the same address as the token1 that you
+have put during your `reserves` call.
+
+#### reserve0
+
+The reserve of `token0` that is inside of the pair for the given exchange id.
+
+#### reserve1
+
+The reserve of `token1` that is inside of the pair for the given exchange id.
+
+:::tip
+`reserve0` and `reserve1` are written in their unisgned integer form. This
+unsigned integer form is recomended in order to make computations but, if you
+are willing to display this number in a more user friendly way, you can follow
+this tutorial: [Display Tokens in Decimal Form](/docs/tutorial/tokens/display-tokens-in-decimal-form)
+:::
+
+</TabItem>
+</Tabs>
+
+### Print the result
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+In order to print the result, we have built a pretty-print method, that will print
+all of the fields of the <a href="/docs/python-sdk/models/Reserve" target="_blank">Reserve</a> model:
+
+```py showLineNumbers
+from typing import List
+
+from blockchainapis.model import Reserve
+
+def pretty_print_reserves(reserves: List[Reserve]):
+    """Pretty print the reserves inside of an array
+
+    :param reserves: The reserves returned by the API that we have to print
+    :type reserves: List[Reserve]
+    """
+    widths = [13, 25, 42, 42, 23, 23]
+    print(f'| {"Blockchain ID":<{widths[0]}} | {"Exchange ID":<{widths[1]}} | {"Token0 Address":<{widths[2]}} | {"Token1 Address":<{widths[3]}} | {"Reserve0":<{widths[4]}} | {"Reserve1":<{widths[5]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} | {"-" * widths[4]} | {"-" * widths[5]} |')
+    for reserve in reserves:
+        print(f'| {reserve.blockchain:<{widths[0]}} | {reserve.exchange:<{widths[1]}} | {reserve.token0:<{widths[2]}} | {reserve.token1:<{widths[3]}} | {reserve.reserve0:<{widths[4]}} | {reserve.reserve1:<{widths[5]}} |')
+```
+
+Then, we just call the given method with the result:
+
+```py
+from typing import List
+
+from blockchainapis import BlockchainAPIsSync
+from blockchainapis.models import Reserve
+
+def pretty_print_reserves(reserves: List[Reserve]):
+    widths = [13, 25, 42, 42, 23, 23]
+    print(f'| {"Blockchain ID":<{widths[0]}} | {"Exchange ID":<{widths[1]}} | {"Token0 Address":<{widths[2]}} | {"Token1 Address":<{widths[3]}} | {"Reserve0":<{widths[4]}} | {"Reserve1":<{widths[5]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} | {"-" * widths[4]} | {"-" * widths[5]} |')
+    for reserve in reserves:
+        print(f'| {reserve.blockchain:<{widths[0]}} | {reserve.exchange:<{widths[1]}} | {reserve.token0:<{widths[2]}} | {reserve.token1:<{widths[3]}} | {reserve.reserve0:<{widths[4]}} | {reserve.reserve1:<{widths[5]}} |')
+
+blockchain_apis = BlockchainAPIsSync()
+
+reserves = blockchain_apis.reserves(blockchain="ethereum", token0="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", token1="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48")
+
+# Print the reserves in an array:
+# highlight-next-line
+pretty_print_reserves(reserves)
+
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+In order to print the result, we have built a pretty-print method, that will print
+all of the fields of the <a href="/docs/python-sdk/models/Reserve" target="_blank">Reserve</a> model:
+
+```py showLineNumbers
+from typing import List
+
+from blockchainapis.model import Reserve
+
+def pretty_print_reserves(reserves: List[Reserve]):
+    """Pretty print the reserves inside of an array
+
+    :param reserves: The reserves returned by the API that we have to print
+    :type reserves: List[Reserve]
+    """
+    widths = [13, 25, 42, 42, 23, 23]
+    print(f'| {"Blockchain ID":<{widths[0]}} | {"Exchange ID":<{widths[1]}} | {"Token0 Address":<{widths[2]}} | {"Token1 Address":<{widths[3]}} | {"Reserve0":<{widths[4]}} | {"Reserve1":<{widths[5]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} | {"-" * widths[4]} | {"-" * widths[5]} |')
+    for reserve in reserves:
+        print(f'| {reserve.blockchain:<{widths[0]}} | {reserve.exchange:<{widths[1]}} | {reserve.token0:<{widths[2]}} | {reserve.token1:<{widths[3]}} | {reserve.reserve0:<{widths[4]}} | {reserve.reserve1:<{widths[5]}} |')
+```
+
+Then, we just call the given method with the result:
+
+```py
+import asyncio
+
+from typing import List
+
+from blockchainapis import BlockchainAPIs
+from blockchainapis.models import Reserve
+
+def pretty_print_reserves(reserves: List[Reserve]):
+    widths = [13, 25, 42, 42, 23, 23]
+    print(f'| {"Blockchain ID":<{widths[0]}} | {"Exchange ID":<{widths[1]}} | {"Token0 Address":<{widths[2]}} | {"Token1 Address":<{widths[3]}} | {"Reserve0":<{widths[4]}} | {"Reserve1":<{widths[5]}} |')
+    print(f'| {"-" * widths[0]} | {"-" * widths[1]} | {"-" * widths[2]} | {"-" * widths[3]} | {"-" * widths[4]} | {"-" * widths[5]} |')
+    for reserve in reserves:
+        print(f'| {reserve.blockchain:<{widths[0]}} | {reserve.exchange:<{widths[1]}} | {reserve.token0:<{widths[2]}} | {reserve.token1:<{widths[3]}} | {reserve.reserve0:<{widths[4]}} | {reserve.reserve1:<{widths[5]}} |')
+
+
+async def get_reserves(blockchain: str, token0: str, token1: str):
+    async with BlockchainAPIs() as blockchain_apis:
+        reserves = await blockchain_apis.reserves(blockchain=blockchain, token0=token0, token1=token1)
+
+        # Print the reserves in an array:
+        # highlight-next-line
+        pretty_print_reserves(reserves)
+
+asyncio.run(get_reserves("ethereum", "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"))
+```
+
+</TabItem>
+</Tabs>
