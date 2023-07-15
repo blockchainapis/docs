@@ -1,31 +1,28 @@
 ---
-title: "Simulate Token Swaps"
-sidebar_label: "How To Determine Exact Token Swap Rates"
-description: "Learn how to predict the amount of tokens that you will get after a certain swap."
+title: "How to predict the output of a swap?"
+sidebar_label: "Predict Token Swap Output"
+description: "Learn how to predict the amount of tokens that you will get after selling a token on ."
 sidebar_position: 3
 ---
 
 With Automated Market Makers, for a specific pair, for example: WETH-USDC, it is possible
 to predict the exact amount of USDC that you will get after exchanging 1 WETH.
 
-The goal of Blockchain APIs is to compute the amount of token0 that you will get after
-selling any amount of token1.
+For example in this screenshot:
+<img loading="eager" alt="Choose plan page" src="/img/docs/simulations/uniswap-amount-out.png" />
 
-In our examples, we will use the pair WETH-USDC and we will answer the following questions:
-- How much USDC will I get if I sell 1 WETH?
-- How much WETH do I need to sell in order to get 2000 USDC?
+We can see that if we exchange 1 ETH for USDC, Uniswap gives us that we will get 1938.92 USDC.
 
-The example above will apply to any token and any pair on the blockchain. More generally, for
-a given token0 and token1 at the end of this tutorial you will learn:
-- How to get the amount of token1 that you will get after selling a certain amount of token0
-- How to get the amount of token0 that you need in order to get a certain amount of token1
+The goal of this tutorial is to learn how to use Blockchain APIs to get the output amount of this trade.
 
 :::caution
 The amount out is computed using the exact same math as inside of the blockchain, taking 
 liquidity provider fee in account. Which means that for big tokens like USDC and WETH, you
 will get the **exact** same output as if you ran the trade on the blockchain.
 
-But be careful: Some tokens implement a fee mechanism on buy or sell, this mechanism is not
+But be careful on 2 points:
+- During high activity, because of slippage, you might get a slightly different amount out
+- Some tokens implement a fee mechanism on buy or sell, this mechanism is not
 taken in account in the math made by Blockchain APIs.
 :::
 
@@ -84,7 +81,5 @@ asyncio.run(get_reserves("ethereum", "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
 </Tabs>
 
 ## Step 3: Get the amount out
-
-In this step we will compute the amount of USDC token that we will own after exchanging 1 WETH for USDC.
 
 
