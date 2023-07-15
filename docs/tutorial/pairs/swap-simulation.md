@@ -280,4 +280,89 @@ tutorial: <a href="/docs/tutorial/blockchains/get-supported-exchanges" target="_
 
 ## Step 4: Retrieve result
 
+### The returned model
 
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+The <a href="/docs/python-sdk/blockchain-apis/amount-out-sync" target="_blank">amount_out</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model.
+
+Here is the structure of the <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model:
+```py
+@dataclass(slots=True, frozen=True)
+class AmountOut
+    blockchain: str
+    exchange: str
+    tokenIn: str
+    tokenOut: str
+    amountIn: int
+    amountOut: int
+```
+
+#### blockchain
+
+The id of the blockchain that the pair is.
+
+#### exchange
+
+The id of the exchange which gives you this rates.
+
+#### tokenIn
+
+The address of the token that you sell. It is the same as the one that you have put when doing the API call.
+
+#### tokenOut
+
+The address of the token that you buy. It is the same as the one that you have put when doing the API call.
+
+#### amountIn
+
+The amount of tokenIn that you sell. It is the same as the amountIn that you put for the API call.
+
+#### amountOut
+
+The resulting amount of tokenOut that you will get after executing the trade.
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+The <a href="/docs/python-sdk/blockchain-apis/amount-out" target="_blank">amount_out</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model.
+
+Here is the structure of the <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model:
+```py
+@dataclass(slots=True, frozen=True)
+class AmountOut
+    blockchain: str
+    exchange: str
+    tokenIn: str
+    tokenOut: str
+    amountIn: int
+    amountOut: int
+```
+
+#### blockchain
+
+The id of the blockchain that the pair is.
+
+#### exchange
+
+The id of the exchange which gives you this rates.
+
+#### tokenIn
+
+The address of the token that you sell. It is the same as the one that you have put when doing the API call.
+
+#### tokenOut
+
+The address of the token that you buy. It is the same as the one that you have put when doing the API call.
+
+#### amountIn
+
+The amount of tokenIn that you sell. It is the same as the amountIn that you put for the API call.
+
+#### amountOut
+
+The resulting amount of tokenOut that you will get after executing the trade.
+
+</TabItem>
+</Tabs>
