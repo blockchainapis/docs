@@ -1,6 +1,6 @@
 ---
 title: "How to get exact exchange rate for a swap?"
-sidebar_label: "Predict Token Swap Output"
+sidebar_label: "Get Token Swap Amount Out"
 description: "Learn how to predict the amount of tokens that you will get after selling a token on Decentralized Exchanges."
 sidebar_position: 3
 ---
@@ -224,9 +224,10 @@ amount_outs = blockchain_apis.amount_out(
     # Here we sell 1 WETH.
     # We need to add 10**18 because WETH have 18 decimals.
     amountIn=1 * 10**18,
+    # highlight-start
     # The UniswapV2 exchange id to get only the rates for UniswapV2
-    # highlight-next-line
     exchange="uniswapv2_ethereum"
+    # highlight-end
 )
 ```
 
@@ -238,20 +239,9 @@ import asyncio
 
 from blockchainapis import BlockchainAPIs
 
-# The blockchain that you want to get the price from
 BLOCKCHAIN = "ethereum"
-
-# The address of the token that we are selling
-# Here we put the address of wrapped ETH
 TOKEN_IN = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
-
-# The address of the token that we are buying
-# Here we put USDC
 TOKEN_OUT = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
-
-# The amount of TOKEN_IN that we are selling.
-# We add 10**18 because the TOKEN_IN is WETH and WETH has
-# 18 decimals
 AMOUNT_IN = 1 * 10**18
 
 async def get_amount_out():
@@ -262,9 +252,10 @@ async def get_amount_out():
             tokenIn=TOKEN_IN,
             tokenOut=TOKEN_OUT,
             amountIn=AMOUNT_IN,
+            # highlight-start
             # The UniswapV2 exchange id put here
-            # highlight-next-line
             exchange="uniswapv2_ethereum"
+            # highlight-end
         )
 
 asyncio.run(get_amount_out())
@@ -366,3 +357,77 @@ The resulting amount of tokenOut that you will get after executing the trade.
 
 </TabItem>
 </Tabs>
+
+### Print the result
+
+For each exchange, we will print the rate that the exchange offers.
+
+<Tabs groupId="programming-language" queryString>
+<TabItem value="python" label="Python">
+
+```py showLineNumbers
+from blockchainapis import BlockchainAPIsSync
+
+blockchain_apis = BlockchainAPIsSync()
+
+amount_outs = blockchain_apis.amount_out(
+    blockchain="ethereum",
+    tokenIn="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    tokenOut="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    amountIn=1 * 10**18
+)
+
+# highlight-start
+# We get the decimals of the tokenOut (in order to format the output):
+token_out_decimals = blockchain_apis.decimals("ethereum", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48")
+
+# We loop to get all of the results
+for amount_out in amount_outs:
+    print(f"{amount_out.exchange} will give you {blockchain_apis.get_token_decimal_form(amount_out.amountOut, token_out_decimals)} USDC")
+# highlight-end
+```
+
+</TabItem>
+<TabItem value="async-python" label="Python-Async">
+
+```py showLineNumbers
+import asyncio
+
+from blockchainapis import BlockchainAPIs
+
+BLOCKCHAIN = "ethereum"
+TOKEN_IN = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+TOKEN_OUT = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+AMOUNT_IN = 1 * 10**18
+
+async def get_amount_out():
+    async with BlockchainAPIs() as blockchain_apis:
+        amount_outs = await blockchain_apis.amount_out(
+            blockchain=BLOCKCHAIN,
+            tokenIn=TOKEN_IN,
+            tokenOut=TOKEN_OUT,
+            amountIn=AMOUNT_IN
+        )
+
+        # highlight-start
+        # We get the decimals of the token out to format the output:
+        token_out_decimals = await blockchain_apis.decimals(BLOCKCHAIN, TOKEN_OUT)
+
+        # We loop to get all of the results
+        for amount_out in amount_outs:
+            print(f"{amount_out.exchange} will give you {blockchain_apis.get_token_decimal_form(amount_out.amountOut, token_out_decimals)} USDC")
+        # highlight-end
+
+asyncio.run(get_amount_out())
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+By default, Blockchain APIs return the values in their `unsigned integer form`. If you are willing to do computations on the
+result, we advise you to keep the unsigned integer form as it is more precise and more optimized.
+
+But, since we are displaying the result to an end user, in our example, we have converted the token to his `decimal form`. If
+you are willing to learn more about `decimal/unsigned integer` form, you can follow this tutorial: [How to display a token amount in his decimal form?](/docs/tutorial/tokens/display-tokens-in-decimal-form)
+:::
