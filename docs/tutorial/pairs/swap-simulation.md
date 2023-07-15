@@ -107,6 +107,7 @@ amount_outs = blockchain_apis.amount_out(
 # highlight-end
 ```
 
+Here we call the <a href="/docs/python-sdk/blockchain-apis-sync/amount-out" target="_blank">amount_out</a> method of the Blockchain APIs instance.
 
 </TabItem>
 <TabItem value="async-python" label="Python-Async">
@@ -147,5 +148,11 @@ async def get_amount_out():
 asyncio.run(get_amount_out())
 ```
 
+Here we call the <a href="/docs/python-sdk/blockchain-apis/amount-out" target="_blank">amount_out</a> method of the Blockchain APIs instance.
+
 </TabItem>
 </Tabs>
+
+## Step 4: Retrieve result
+
+
