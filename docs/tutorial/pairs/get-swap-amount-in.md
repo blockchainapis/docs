@@ -72,7 +72,7 @@ import asyncio
 from blockchainapis import BlockchainAPIs
 
 # We need to create an async function, because we can't do async calls in main Python thread.
-async def get_reserves(blockchain: str, token0: str, token1: str):
+async def get_amount_in():
     # We instanciate the Blockchain APIs instance using Python
     # async with feature, this way we are sure that the API instance
     # is closed at the end
@@ -80,7 +80,7 @@ async def get_reserves(blockchain: str, token0: str, token1: str):
         # do some stuff...
         pass
 
-asyncio.run(get_reserves("ethereum", "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"))
+asyncio.run(get_amount_in())
 ```
 
 </TabItem>
