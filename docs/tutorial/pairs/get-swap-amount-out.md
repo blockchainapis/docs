@@ -92,7 +92,7 @@ blockchain_apis = BlockchainAPIsSync()
 
 # Do an API call in order to get the amount out
 # highlight-start
-amount_outs = blockchain_apis.amount_out(
+amounts_out = blockchain_apis.amount_out(
     # The blockchain on which you want the exchange to take place
     blockchain="ethereum",
     # The address of the token that we sell, here it is WETH address
@@ -137,7 +137,7 @@ async def get_amount_out():
     async with BlockchainAPIs() as blockchain_apis:
         # Call the API to get the amount out
         # highlight-start
-        amount_outs = await blockchain_apis.amount_out(
+        amounts_out = await blockchain_apis.amount_out(
             blockchain=BLOCKCHAIN,
             tokenIn=TOKEN_IN,
             tokenOut=TOKEN_OUT,
@@ -213,7 +213,7 @@ from blockchainapis import BlockchainAPIsSync
 blockchain_apis = BlockchainAPIsSync()
 
 # Do an API call in order to get the amount out on uniswap
-amount_outs = blockchain_apis.amount_out(
+amounts_out = blockchain_apis.amount_out(
     # The blockchain on which you want the exchange to take place
     blockchain="ethereum",
     # The address of the token that we sell, here it is WETH address
@@ -247,7 +247,7 @@ AMOUNT_IN = 1 * 10**18
 async def get_amount_out():
     async with BlockchainAPIs() as blockchain_apis:
         # Do an API call in order to get the amount out on uniswap
-        amount_outs = await blockchain_apis.amount_out(
+        amounts_out = await blockchain_apis.amount_out(
             blockchain=BLOCKCHAIN,
             tokenIn=TOKEN_IN,
             tokenOut=TOKEN_OUT,
@@ -370,7 +370,7 @@ from blockchainapis import BlockchainAPIsSync
 
 blockchain_apis = BlockchainAPIsSync()
 
-amount_outs = blockchain_apis.amount_out(
+amounts_out = blockchain_apis.amount_out(
     blockchain="ethereum",
     tokenIn="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     tokenOut="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
@@ -382,7 +382,7 @@ amount_outs = blockchain_apis.amount_out(
 token_out_decimals = blockchain_apis.decimals("ethereum", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48")
 
 # We loop to get all of the results
-for amount_out in amount_outs:
+for amount_out in amounts_out:
     print(f"{amount_out.exchange} will give you {blockchain_apis.get_token_decimal_form(amount_out.amountOut, token_out_decimals)} USDC")
 # highlight-end
 ```
@@ -402,7 +402,7 @@ AMOUNT_IN = 1 * 10**18
 
 async def get_amount_out():
     async with BlockchainAPIs() as blockchain_apis:
-        amount_outs = await blockchain_apis.amount_out(
+        amounts_out = await blockchain_apis.amount_out(
             blockchain=BLOCKCHAIN,
             tokenIn=TOKEN_IN,
             tokenOut=TOKEN_OUT,
@@ -414,7 +414,7 @@ async def get_amount_out():
         token_out_decimals = await blockchain_apis.decimals(BLOCKCHAIN, TOKEN_OUT)
 
         # We loop to get all of the results
-        for amount_out in amount_outs:
+        for amount_out in amounts_out:
             print(f"{amount_out.exchange} will give you {blockchain_apis.get_token_decimal_form(amount_out.amountOut, token_out_decimals)} USDC")
         # highlight-end
 
