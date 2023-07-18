@@ -98,22 +98,27 @@ blockchain_apis = BlockchainAPIsSync()
 
 # Do an API call in order to get the amount out
 # highlight-start
-amount_outs = blockchain_apis.amount_out(
+amounts_in = blockchain_apis.amount_in(
     # The blockchain on which you want the exchange to take place
     blockchain="ethereum",
-    # The address of the token that we sell, here it is WETH address
+    # The address of the token that you sell, here it is WETH address
     tokenIn="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     # The address of the token that we buy, here it is USDC
     tokenOut="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-    # The amount of tokenIn that we sell.
-    # Here we sell 1 WETH.
-    # We need to add 10**18 because WETH have 18 decimals.
-    amountIn=1 * 10**18
+    # The amount of tokenOut that we are willing to get.
+    # Here we want to get 2000 USDC.
+    # We need to add 10**6 because the USDC token has 6 decimals
+    amountOut=2000 * 10**6,
+    # You can optionally specify an exchange id in order to get the rate
+    # on a specific exchange, for example if you want to use Uniswap:
+    # exchange="uniswapv2_ethereum"
+    # By default, if you don't specify an exchange, it will give you the amount
+    # out for every exchange available.
 )
 # highlight-end
 ```
 
-Here we call the <a href="/docs/python-sdk/blockchain-apis-sync/amount-out" target="_blank">amount_out</a> method of the Blockchain APIs instance.
+Here we call the <a href="/docs/python-sdk/blockchain-apis-sync/amount-in" target="_blank">amount_in</a> method of the Blockchain APIs instance.
 
 </TabItem>
 <TabItem value="async-python" label="Python-Async">
@@ -123,38 +128,33 @@ import asyncio
 
 from blockchainapis import BlockchainAPIs
 
-# The blockchain that you want to get the price from
-BLOCKCHAIN = "ethereum"
-
-# The address of the token that we are selling
-# Here we put the address of wrapped ETH
-TOKEN_IN = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
-
-# The address of the token that we are buying
-# Here we put USDC
-TOKEN_OUT = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
-
-# The amount of TOKEN_IN that we are selling.
-# We add 10**18 because the TOKEN_IN is WETH and WETH has
-# 18 decimals
-AMOUNT_IN = 1 * 10**18
-
 async def get_amount_out():
     async with BlockchainAPIs() as blockchain_apis:
         # Call the API to get the amount out
         # highlight-start
-        amount_outs = await blockchain_apis.amount_out(
+        amounts_in = await blockchain_apis.amount_in(
+            # The blockchain on which you want the exchange to take place
             blockchain=BLOCKCHAIN,
-            tokenIn=TOKEN_IN,
-            tokenOut=TOKEN_OUT,
-            amountIn=AMOUNT_IN
+            # The address of the token that you sell, here it is WETH address
+            tokenIn="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            # The address of the token that we buy, here it is USDC
+            tokenOut="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            # The amount of tokenOut that we are willing to get.
+            # Here we want to get 2000 USDC.
+            # We need to add 10**6 because the USDC token has 6 decimals
+            amountOut=2000 * 10**6,
+            # You can optionally set a specific exchange id in order to get the rate
+            # on a specific exchange, for example if you want to use Uniswap:
+            # exchange="uniswapv2_ethereum"
+            # By default, if you don't specify an exchange, it will give you the amount
+            # out for every exchange available.
         )
         # highlight-end
 
 asyncio.run(get_amount_out())
 ```
 
-Here we call the <a href="/docs/python-sdk/blockchain-apis/amount-out" target="_blank">amount_out</a> method of the Blockchain APIs instance.
+Here we call the <a href="/docs/python-sdk/blockchain-apis/amount-in" target="_blank">amount_in</a> method of the Blockchain APIs instance.
 
 </TabItem>
 </Tabs>
@@ -191,13 +191,13 @@ an exception.
 If you are willing to know the list of available pairs you can follow this tutorial: <a href="/docs/tutorial/pairs/get-blockchain-pairs" target="_blank">Get Blockchain Pairs</a>
 :::
 
-### amountIn
+### amountOut
 
-The amount of the source token that we are willing to sell. For example, here we put: `1000000000000000000` which correspond to
-`1.0` WETH.
+The amount of tokenOut that we are willing to get at the end of the trade. For example, here we have put: `2000000000` which corresponds
+to `2000.00` USDC.
 
 :::tip
-The token needs to be in his `unsigned integer form`. This is because the blockchain uses only integer in his computations for more
+The token amount need to be in his `unsigned integer form`. This is because the blockchain uses only integer in his computations for more
 precision. To learn more you you can follow this tutorial: <a href="/docs/tutorial/tokens/display-tokens-in-decimal-form#step-5-display-the-token-in-his-unsigned-integer-form" target="_blank">Display the token in unsigned integer form</a>
 :::
 
@@ -218,20 +218,14 @@ from blockchainapis import BlockchainAPIsSync
 
 blockchain_apis = BlockchainAPIsSync()
 
-# Do an API call in order to get the amount out on uniswap
-amount_outs = blockchain_apis.amount_out(
-    # The blockchain on which you want the exchange to take place
+# Do an API call in order to get the amount in on uniswap
+amounts_in = blockchain_apis.amount_in(
     blockchain="ethereum",
-    # The address of the token that we sell, here it is WETH address
     tokenIn="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-    # The address of the token that we buy, here it is USDC
     tokenOut="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-    # The amount of tokenIn that we sell.
-    # Here we sell 1 WETH.
-    # We need to add 10**18 because WETH have 18 decimals.
-    amountIn=1 * 10**18,
+    amountOut=2000 * 10**6,
     # highlight-start
-    # The UniswapV2 exchange id to get only the rates for UniswapV2
+    # The id of the exchange on which you are willing to do the swap
     exchange="uniswapv2_ethereum"
     # highlight-end
 )
@@ -245,21 +239,17 @@ import asyncio
 
 from blockchainapis import BlockchainAPIs
 
-BLOCKCHAIN = "ethereum"
-TOKEN_IN = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
-TOKEN_OUT = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
-AMOUNT_IN = 1 * 10**18
-
 async def get_amount_out():
     async with BlockchainAPIs() as blockchain_apis:
-        # Do an API call in order to get the amount out on uniswap
-        amount_outs = await blockchain_apis.amount_out(
-            blockchain=BLOCKCHAIN,
-            tokenIn=TOKEN_IN,
-            tokenOut=TOKEN_OUT,
-            amountIn=AMOUNT_IN,
+        # Do an API call in order to get the amount of WETH required in order to get
+        # 2000.00 USDC on UniswapV2.
+        amounts_in = await blockchain_apis.amount_in(
+            blockchain="ethereum",
+            tokenIn="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            tokenOut="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            amountOut=2000 * 10**6,
             # highlight-start
-            # The UniswapV2 exchange id put here
+            # The id of the exchange on which you want to simulate the swap
             exchange="uniswapv2_ethereum"
             # highlight-end
         )
