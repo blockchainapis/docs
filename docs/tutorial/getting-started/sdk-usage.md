@@ -1,7 +1,7 @@
 ---
 title: "How to Use the SDK"
 description: "Learn how to use the Blockchain APIs SDK to do any API call"
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 At the end of this tutorial, you will know how to use the SDK to do any API call.
