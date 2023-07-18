@@ -10,7 +10,7 @@ Blockchain APIs has 3 main methods:
 - [Get Amount Out](/docs/tutorial/pairs/get-swap-amount-out)
 - [Get Amount In](/docs/tutorial/pairs/get-swap-amount-in)
 
-If you know how to use these 3 methods, you know how to utilise the API.
+If you know how to use these 3 methods, you know how to use the core methods of the API.
 
 :::tip
 You can try all of these methods for free on the [API Sandbox](https://api.blockchainapis.io/docs):
@@ -24,10 +24,8 @@ You can try all of these methods for free on the [API Sandbox](https://api.block
 ### Get Reserves
 
 The [Get Reserves](/docs/tutorial/pairs/get-reserves) method allow you to get the
-reserves of a specific pair.
-
-The good thing about Blockchain APIs is that it gives you the reserve of the pair
-inside of every dex available for the given blockchain.
+reserves of a specific pair. It will give you the reserves of the pair in every available
+Decentralized Exchange for the given blockchain.
 
 For example this request:
 
@@ -72,14 +70,18 @@ Here is the result:
 ]
 ```
 
+:::tip
+For more information you can follow this tutorial: <a href="/docs/tutorial/pairs/get-reserves" target="_blank">Get Reserves</a>
+:::
+
 ### Simulate trades
 
-One of the main feature is trade-simulation using the [amount_out](/docs/tutorial/pairs/get-swap-amount-out) and [amount_in](/docs/tutorial/pairs/get-swap-amount-in) methods.
+One of the main feature of [Blockchain APIs](https://www.blockchainapis.io) is trade-simulation using the [amount_out](/docs/tutorial/pairs/get-swap-amount-out) and [amount_in](/docs/tutorial/pairs/get-swap-amount-in) methods.
 
-The goal here, is for example in the screenshot from uniswap below:
+For example, in the screenshot below:
 <img loading="eager" alt="Choose plan page" src="/img/docs/simulations/uniswap-amount-out.png" />
 
-Here you can see the amount of USDC that you will get after exchange one 1 ETH for USDC.
+You can see the amount of USDC that you will get after exchanging 1 ETH for USDC.
 
 The API will copy the math of the blockchain and give you the exact same output for the trade as if you
 executed it on the blockchain.
@@ -88,7 +90,7 @@ For example this request:
 
 https://api.blockchainapis.io/v0/exchanges/pairs/amountOut?blockchain=ethereum&tokenIn=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2&tokenOut=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&amountIn=1000000000000000000
 
-Will give you the amount of USDC that you will get after selling one ETH one every DEX.
+Will give you the amount of USDC that you will get after selling one ETH on every Decentralized Exchange.
 
 Here is the result of the request:
 ```json
@@ -168,6 +170,14 @@ Here is the result of the request:
 ]
 ```
 
+:::caution
+There are two limitations of Blockchain APIs computing:
+- During high volatility the amount that you will get may differ because of slippage
+- If some tokens implement a fee mechanism (for example 5% sell fee), this fee mechanism is not taken in account by the Blockchain APIs math
+
+Other than that, you will get the exact same output as Uniswap shows you.
+:::
+
 ## Helper methods
 
 The 3 method that we previously saw are the core methods of the API, all of the other methods are made to support the above methods.
@@ -185,7 +195,7 @@ In the last request we have made, you can see that we input: 2000000000 USDC.
 You may ask:
 > Why did we wrote 2000000000 instead of 2000.00?
 
-This is because the blockchain is using only integers to compute financial data, because they are more precise. Here we
+This is because the blockchain is only using integers to compute financial data, because they are more precise. Here we
 have put `2000000000` instead of `2000.00` because the USDC token has 6 decimals. So we have:
 
 2000.00 USDC * 10**6 = 2000000000
@@ -200,7 +210,7 @@ If you are willing to display the token in his decimal form (2000000000 to 2000.
 ### Getting available Pairs
 
 Since the beginning of this page, we only took the pair USDC - WETH as an example. But actually, the API supports more than 300000 pairs (all of the pairs
-available, new pairs are automatically added to the API).
+currently available for trading and new pairs are automatically added to the API).
 
 For example this API call:
 
@@ -243,8 +253,6 @@ Here is the result:
 If you want a guide on how to get the pairs, you can follow this tutorial: [Get Blockchain Pairs](/docs/tutorial/pairs/get-blockchain-pairs)
 
 ### Blockchains
-
-Every API call requires you to specify on which blockchain the API call is targeted to.
 
 [Blockchain APIs](https://www.blockchainapis.io) supports multiple blockchains. So, for every request that you make,
 you need to specify on which blockchain the call have to be made.
