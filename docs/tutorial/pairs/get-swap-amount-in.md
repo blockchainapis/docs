@@ -128,7 +128,7 @@ import asyncio
 
 from blockchainapis import BlockchainAPIs
 
-async def get_amount_out():
+async def get_amount_in():
     async with BlockchainAPIs() as blockchain_apis:
         # Call the API to get the amount out
         # highlight-start
@@ -151,7 +151,7 @@ async def get_amount_out():
         )
         # highlight-end
 
-asyncio.run(get_amount_out())
+asyncio.run(get_amount_in())
 ```
 
 Here we call the <a href="/docs/python-sdk/blockchain-apis/amount-in" target="_blank">amount_in</a> method of the Blockchain APIs instance.
@@ -218,7 +218,8 @@ from blockchainapis import BlockchainAPIsSync
 
 blockchain_apis = BlockchainAPIsSync()
 
-# Do an API call in order to get the amount in on uniswap
+# Do an API call in order to get the amount of WETH required in order to get
+# 2000.00 USDC on UniswapV2.
 amounts_in = blockchain_apis.amount_in(
     blockchain="ethereum",
     tokenIn="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -239,7 +240,7 @@ import asyncio
 
 from blockchainapis import BlockchainAPIs
 
-async def get_amount_out():
+async def get_amount_in():
     async with BlockchainAPIs() as blockchain_apis:
         # Do an API call in order to get the amount of WETH required in order to get
         # 2000.00 USDC on UniswapV2.
@@ -254,7 +255,7 @@ async def get_amount_out():
             # highlight-end
         )
 
-asyncio.run(get_amount_out())
+asyncio.run(get_amount_in())
 ```
 
 </TabItem>
@@ -272,7 +273,7 @@ tutorial: <a href="/docs/tutorial/blockchains/get-supported-exchanges" target="_
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
 
-The <a href="/docs/python-sdk/blockchain-apis/amount-in-sync" target="_blank">amount_in</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountIn</a> model.
+The <a href="/docs/python-sdk/blockchain-apis-sync/amount-in" target="_blank">amount_in</a> method returns a List of <a href="/docs/python-sdk/models/amount-in" target="_blank">AmountIn</a> model.
 
 Here is the structure of the <a href="/docs/python-sdk/models/amount-in" target="_blank">AmountIn</a> model:
 ```py
@@ -313,7 +314,7 @@ The amount of tokenIn that you want. This value is the same as the one you put w
 </TabItem>
 <TabItem value="async-python" label="Python-Async">
 
-The <a href="/docs/python-sdk/blockchain-apis/amount-sync" target="_blank">amount_in</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountIn</a> model.
+The <a href="/docs/python-sdk/blockchain-apis/amount-in" target="_blank">amount_in</a> method returns a List of <a href="/docs/python-sdk/models/amount-in" target="_blank">AmountIn</a> model.
 
 Here is the structure of the <a href="/docs/python-sdk/models/amount-in" target="_blank">AmountIn</a> model:
 ```py
