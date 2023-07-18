@@ -15,6 +15,11 @@ We can see that if we exchange 1 ETH for USDC, Uniswap gives us that we will get
 
 The goal of this tutorial is to learn how to use Blockchain APIs to get the output amount of this trade.
 
+:::tip
+If you are willing to do the reverse operation: Get the amount of tokens required in order to buy a certain
+amount of tokens, you can follow this tutorial: [Get Token Swap Amount In](/docs/tutorial/pairs/get-swap-amount-in)
+:::
+
 :::caution
 The amount out is computed using the exact same math as inside of the blockchain, taking 
 liquidity provider fee in account. Which means that for big tokens like USDC and WETH, you
