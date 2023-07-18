@@ -272,12 +272,12 @@ tutorial: <a href="/docs/tutorial/blockchains/get-supported-exchanges" target="_
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
 
-The <a href="/docs/python-sdk/blockchain-apis/amount-out-sync" target="_blank">amount_out</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model.
+The <a href="/docs/python-sdk/blockchain-apis/amount-in-sync" target="_blank">amount_in</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountIn</a> model.
 
-Here is the structure of the <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model:
+Here is the structure of the <a href="/docs/python-sdk/models/amount-in" target="_blank">AmountIn</a> model:
 ```py
 @dataclass(slots=True, frozen=True)
-class AmountOut
+class AmountIn
     blockchain: str
     exchange: str
     tokenIn: str
@@ -288,7 +288,7 @@ class AmountOut
 
 #### blockchain
 
-The id of the blockchain that the pair is.
+The id of the blockchain on which the pair is.
 
 #### exchange
 
@@ -304,21 +304,21 @@ The address of the token that you buy. It is the same as the one that you have p
 
 #### amountIn
 
-The amount of tokenIn that you sell. It is the same as the amountIn that you put for the API call.
+The amount of tokenIn that you need in order to get amountOut tokenOut.
 
 #### amountOut
 
-The resulting amount of tokenOut that you will get after executing the trade.
+The amount of tokenIn that you want. This value is the same as the one you put when doing the API call.
 
 </TabItem>
 <TabItem value="async-python" label="Python-Async">
 
-The <a href="/docs/python-sdk/blockchain-apis/amount-out" target="_blank">amount_out</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model.
+The <a href="/docs/python-sdk/blockchain-apis/amount-sync" target="_blank">amount_in</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountIn</a> model.
 
-Here is the structure of the <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model:
+Here is the structure of the <a href="/docs/python-sdk/models/amount-in" target="_blank">AmountIn</a> model:
 ```py
 @dataclass(slots=True, frozen=True)
-class AmountOut
+class AmountIn
     blockchain: str
     exchange: str
     tokenIn: str
@@ -329,7 +329,7 @@ class AmountOut
 
 #### blockchain
 
-The id of the blockchain that the pair is.
+The id of the blockchain on which the pair is.
 
 #### exchange
 
@@ -345,11 +345,11 @@ The address of the token that you buy. It is the same as the one that you have p
 
 #### amountIn
 
-The amount of tokenIn that you sell. It is the same as the amountIn that you put for the API call.
+The amount of tokenIn that you need in order to get amountOut tokenOut.
 
 #### amountOut
 
-The resulting amount of tokenOut that you will get after executing the trade.
+The amount of tokenIn that you want. This value is the same as the one you put when doing the API call.
 
 </TabItem>
 </Tabs>
@@ -366,20 +366,19 @@ from blockchainapis import BlockchainAPIsSync
 
 blockchain_apis = BlockchainAPIsSync()
 
-amount_outs = blockchain_apis.amount_out(
+amounts_in = blockchain_apis.amount_in(
     blockchain="ethereum",
     tokenIn="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     tokenOut="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-    amountIn=1 * 10**18
+    amountOut=2000 * 10**6,
 )
 
 # highlight-start
-# We get the decimals of the tokenOut (in order to format the output):
-token_out_decimals = blockchain_apis.decimals("ethereum", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48")
-
 # We loop to get all of the results
-for amount_out in amount_outs:
-    print(f"{amount_out.exchange} will give you {blockchain_apis.get_token_decimal_form(amount_out.amountOut, token_out_decimals)} USDC")
+for amount_in in amounts_in:
+    # We print with the decimal form.
+    # WETH have 18 decimals so we put 18 for the decimal form.
+    print(f"In {amount_in.exchange} you will need {blockchain_apis.get_token_decimal_form(amount_in.amountIn, 18)} WETH in order to get 2000.00 USDC")
 # highlight-end
 ```
 
@@ -391,30 +390,24 @@ import asyncio
 
 from blockchainapis import BlockchainAPIs
 
-BLOCKCHAIN = "ethereum"
-TOKEN_IN = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
-TOKEN_OUT = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
-AMOUNT_IN = 1 * 10**18
-
-async def get_amount_out():
+async def get_amount_in():
     async with BlockchainAPIs() as blockchain_apis:
-        amount_outs = await blockchain_apis.amount_out(
-            blockchain=BLOCKCHAIN,
-            tokenIn=TOKEN_IN,
-            tokenOut=TOKEN_OUT,
-            amountIn=AMOUNT_IN
+        amounts_in = await blockchain_apis.amount_in(
+            blockchain="ethereum",
+            tokenIn="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            tokenOut="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            amountOut=2000 * 10**6,
         )
 
         # highlight-start
-        # We get the decimals of the token out to format the output:
-        token_out_decimals = await blockchain_apis.decimals(BLOCKCHAIN, TOKEN_OUT)
-
         # We loop to get all of the results
-        for amount_out in amount_outs:
-            print(f"{amount_out.exchange} will give you {blockchain_apis.get_token_decimal_form(amount_out.amountOut, token_out_decimals)} USDC")
+        for amount_in in amounts_in:
+            # We print with the decimal form.
+            # WETH have 18 decimals so we put 18 for the decimal form.
+            print(f"In {amount_in.exchange} you will need {blockchain_apis.get_token_decimal_form(amount_in.amountIn, 18)} WETH in order to get 2000.00 USDC")
         # highlight-end
 
-asyncio.run(get_amount_out())
+asyncio.run(get_amount_in())
 ```
 
 </TabItem>
