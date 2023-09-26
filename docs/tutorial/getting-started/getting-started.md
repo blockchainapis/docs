@@ -308,10 +308,8 @@ amountOut: 210231391
 ...
 ```
 
-Here, we can see, for example, in the exchange with id `dooar_ethereum`, the amountOut is: `1705409482`
+Here, the exchange with id `dooar_ethereum` have an amountOut of `1705409482`.
 
-Which means, than in `dooar_ethereum`, we will get `1705409482` USDC after exchanging 1 ETH at the time of this writting.
+USDC have 6 decimals so we would get 1705.409482 USDC after exchanging 1 ETH in dooar_ethereum.
 
-USDC have 6 decimals, which means that we will get 1705.409482 USDC after exchanging 1 ETH in dooar_ethereum.
-
-_Please  note: The fee of the exchange is took in account by the API. Blockchain APIs is giving you the exact amount that you will get as if you really did the exchange. Be careful, some tokens have an  extra fee on buy/sell which is not taken in account using this method._
+_Please  note: The fee of the exchange is took in account by the API. Blockchain APIs is giving you the exact amount that you will get as if you did the exchange. Be careful, some tokens have an  extra fee on buy/sell which is not taken in account using this method._
