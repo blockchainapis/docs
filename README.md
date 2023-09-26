@@ -25,17 +25,3 @@ $ npm build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## TODO
-
-### Current
-
-- [ ] Change Exception documentation for the sdk-usage page because the Exception "Exception" is not thrown randomly
-- [ ] Re-generate the python SDK doc in order to add all other exceptions
-
-### Finitions
-
-- [ ] Add search bar
-- [ ] Remove blog
-- [ ] Add link to discord in place of blog
-- [ ] Add link to API reference (that opens in another link)
