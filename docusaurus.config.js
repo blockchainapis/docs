@@ -75,6 +75,11 @@ const config = {
             position: 'left'
           },
           {
+            href: "https://discord.gg/GphRMJXmS5",
+            label: 'Discord',
+            position: 'left'
+          },
+          {
             type: "dropdown",
             label: "SDK references",
             position: "right",
