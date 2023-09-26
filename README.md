@@ -2,6 +2,8 @@
 
 This website is the documentation of the blockchain APIs website.
 
+It is available at: https://docs.blockchainapis.io
+
 ### Installation
 
 ```
