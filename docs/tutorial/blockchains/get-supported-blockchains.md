@@ -20,9 +20,9 @@ At the end of the tutorial you will be able to print all blockchain IDs supporte
 
 - arbitrum
 - avalanche
-- bsc
 - ethereum
 - polygon
+- bsc
 
 ## Step 1: Install the SDK
 
