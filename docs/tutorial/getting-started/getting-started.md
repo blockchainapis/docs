@@ -157,7 +157,7 @@ the address of the USDC token.
 
 The amount of tokenIn that we are selling. Here we have put `1 * 10**18` because we want to sell 1ETH.
 
-We have added `10**18` because the wrapped ETH token have 18 decimals.
+We have added `10**18` because the wrapped ETH token has 18 decimals.
 
 If you are willing to know the decimal of a token you can follow this tutorial: [How to get the decimals of a token](/docs/tutorial/tokens/get-token-decimals)
 
@@ -235,7 +235,7 @@ for amount_out in amount_outs:
 </TabItem>
 </Tabs>
 
-Then, we will print all the values:
+Then, we will print all of the values:
 
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
