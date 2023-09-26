@@ -136,7 +136,7 @@ Here we call the <a href="/docs/python-sdk/blockchain-apis/decimals" target="_bl
 The id of the blockchain where the token is. Here we put `ethereum` because we want the decimals of the given token on the Ethereum blockchain.
 
 :::tip
-Follow this tutorial to get the list of available blockchain ids: [Get Supported Blockchains](/docs/tutorial/getting-started/get-supported-blockchains)
+Follow this tutorial to get the list of available blockchain ids: [Get Supported Blockchains](/docs/tutorial/blockchains/get-supported-blockchains)
 :::
 
 #### token
