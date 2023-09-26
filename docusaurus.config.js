@@ -53,6 +53,12 @@ const config = {
         },
         googleTagManager: {
           containerId: 'GTM-N8RJVWP9'
+        },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: [],
+          filename: 'sitemap.xml'
         }
       }),
     ],
