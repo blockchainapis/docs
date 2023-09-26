@@ -1,5 +1,6 @@
 ---
-title: "Get Blockchain Pairs"
+title: "How to get all trading pairs of a Blockchain?"
+sidebar_label: "Get Blockchain Pairs"
 description: "Learn how to get the list of trading pairs available for a certain blockchain"
 sidebar_position: 1
 ---
@@ -447,5 +448,5 @@ certain amount of `token0` to get a certain amount of `token1` and sell a certai
 to get `token0`.
 
 If you wish to know the exact output that you will get for exchanging two tokens, you can follow
-the following tutorial: [Trade Simulations](/docs/tutorial/pairs/trade-simulation)
+the following tutorial: [How to get the exact exchange rate for a swap](/docs/tutorial/pairs/get-swap-amount-out)
 :::
