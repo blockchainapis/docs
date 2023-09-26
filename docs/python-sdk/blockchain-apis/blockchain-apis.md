@@ -5,7 +5,6 @@ sidebar_position: 1
 sidebar_class_name: sidebar-blockchain-apis
 ---
 
-
 High-frequency DEX API
 
 Our API empowers you to access live financial data across multiple blockchains
@@ -24,7 +23,3 @@ Ready to try it out? [Sign up for a free API key here](https://dashboard.blockch
 or start exploring the possibilities on this page. Need support or have questions? Join our
 [Discord community](https://discord.gg/GphRMJXmS5) where our team and fellow developers are
 eager to help you make the most of our powerful API.
-
-:::tip
-To install the SDK, run the command: `pip install blockchain-apis`
-:::
