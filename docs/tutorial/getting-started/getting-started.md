@@ -1,5 +1,5 @@
 ---
-title: "Quickstart"
+title: "QuickStart"
 description: "Get started with Blockchain APIs in less than 5 minutes"
 sidebar_position: 1
 keywords:
@@ -11,7 +11,7 @@ keywords:
 - Rust
 ---
 
-# Quickstart
+# QuickStart
 
 Learn how to get the current price of Ethereum using Blockchain APIs.
 
@@ -60,7 +60,7 @@ from blockchainapis import BlockchainAPIs
 
 # We need to create an async function, because we can't do async calls in main Python thread.
 async def get_price():
-    # We instanciate the Blockchain APIs instance using Python
+    # We instantiate the Blockchain APIs instance using Python
     # async with feature, this way we are sure that the API instance
     # is closed at the end
     async with BlockchainAPIs() as blockchain_apis:
@@ -109,7 +109,7 @@ from blockchainapis import BlockchainAPIs
 
 # We need to create an async function, because we can't do async calls in main Python thread.
 async def get_price():
-    # We instanciate the Blockchain APIs instance using Python
+    # We instantiate the Blockchain APIs instance using Python
     # async with feature, this way we are sure that the API instance
     # is closed at the end
     async with BlockchainsAPIs() as blockchain_apis:
