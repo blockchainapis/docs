@@ -47,6 +47,10 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/tranquil-blue.css'),
         },
+        gtag: {
+          trackingID: 'GTM-N8RJVWP9',
+          anonymizeIP: false
+        }
       }),
     ],
   ],
