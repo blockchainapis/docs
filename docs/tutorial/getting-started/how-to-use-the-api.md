@@ -5,7 +5,7 @@ sidebar_label: "How to use Blockchain APIs"
 sidebar_position: 4
 ---
 
-Blockchain APIs has 3 main methods:
+Blockchain APIs have 3 main methods:
 - [Get Reserves](/docs/tutorial/pairs/get-reserves)
 - [Get Amount Out](/docs/tutorial/pairs/get-swap-amount-out)
 - [Get Amount In](/docs/tutorial/pairs/get-swap-amount-in)
@@ -13,7 +13,7 @@ Blockchain APIs has 3 main methods:
 If you know how to use these 3 methods, you know how to use the core methods of the API.
 
 :::tip
-You can try all of these methods for free on the [API Sandbox](https://api.blockchainapis.io/docs):
+You can try these methods for free on the [API Sandbox](https://api.blockchainapis.io/docs):
 - [Get Reserves](https://api.blockchainapis.io/docs#/exchanges/reserves_v0_exchanges_pairs_reserves_get)
 - [Get Amount Out](https://api.blockchainapis.io/docs#/exchanges/amountOut_v0_exchanges_pairs_amountOut_get)
 - [Get Amount In](https://api.blockchainapis.io/docs#/exchanges/amountIn_v0_exchanges_pairs_amountIn_get)
@@ -23,7 +23,7 @@ You can try all of these methods for free on the [API Sandbox](https://api.block
 
 ### Get Reserves
 
-The [Get Reserves](/docs/tutorial/pairs/get-reserves) method allow you to get the
+The [Get Reserves](/docs/tutorial/pairs/get-reserves) method allows you to get the
 reserves of a specific pair. It will give you the reserves of the pair in every available
 Decentralized Exchange for the given blockchain.
 
@@ -71,12 +71,12 @@ Here is the result:
 ```
 
 :::tip
-For more information you can follow this tutorial: <a href="/docs/tutorial/pairs/get-reserves" target="_blank">Get Reserves</a>
+For more information, follow this tutorial: <a href="/docs/tutorial/pairs/get-reserves" target="_blank">Get Reserves</a>
 :::
 
 ### Simulate trades
 
-One of the main feature of [Blockchain APIs](https://www.blockchainapis.io) is trade-simulation using the [amount_out](/docs/tutorial/pairs/get-swap-amount-out) and [amount_in](/docs/tutorial/pairs/get-swap-amount-in) methods.
+One of the main features of [Blockchain APIs](https://www.blockchainapis.io) is trade-simulation using the [amount_out](/docs/tutorial/pairs/get-swap-amount-out) and [amount_in](/docs/tutorial/pairs/get-swap-amount-in) methods.
 
 For example, in the screenshot below:
 <img loading="eager" alt="Choose plan page" src="/img/docs/simulations/uniswap-amount-out.png" />
@@ -126,8 +126,8 @@ Here is the result of the request:
 ]
 ```
 
-The method [amount_in](/docs/tutorial/pairs/get-swap-amount-in) will allow you to get the reverse operation: For example,
-if you are willing to buy 2000.00 USDC, it will give you the amount of ETH that you need to have in order to be able
+The method [amount_in](/docs/tutorial/pairs/get-swap-amount-in) will allow you to make the reverse operation: For example,
+if you are willing to buy 2000.00 USDC, it will give you the amount of ETH that you need to have to be able
 to execute this trade.
 
 For example, the API call below:
@@ -173,14 +173,14 @@ Here is the result of the request:
 :::caution
 There are two limitations of Blockchain APIs computing:
 - During high volatility the amount that you will get may differ because of slippage
-- If some tokens implement a fee mechanism (for example 5% sell fee), this fee mechanism is not taken in account by the Blockchain APIs math
+- If some tokens have a fee mechanism (for example, 5% sell fee), this fee mechanism is not taken into account by the Blockchain APIs math
 
 Other than that, you will get the exact same output as Uniswap shows you.
 :::
 
 ## Helper methods
 
-The 3 method that we previously saw are the core methods of the API, all of the other methods are made to support the above methods.
+The 3 method that we saw are the core methods of the API, the other methods support the above methods.
 
 In this part we will see:
 - How to handle token decimals
@@ -193,24 +193,22 @@ In this part we will see:
 In the last request we have made, you can see that we input: 2000000000 USDC.
 
 You may ask:
-> Why did we wrote 2000000000 instead of 2000.00?
+> Why did we write 2000000000 instead of 2000.00?
 
-This is because the blockchain is only using integers to compute financial data, because they are more precise. Here we
-have put `2000000000` instead of `2000.00` because the USDC token has 6 decimals. So we have:
+Because the blockchain only uses integer data (they are more precise). Here we have put `2000000000` instead of `2000.00` because the USDC token has 6 decimals. So we have:
 
 2000.00 USDC * 10**6 = 2000000000
 
 That is where the `2000000000` comes from.
 
-By default the API will copy the Blockchain behavior and return the value as an integer, we advise you to keep
-the same form for all of your computations.
+By default, the API will copy the Blockchain behavior and return the value as an integer. We recommend you to keep
+the same form for your computations.
 
-If you are willing to display the token in his decimal form (2000000000 to 2000.00) you can follow these tutorials: [Get Token Decimals](/docs/tutorial/tokens/get-token-decimals) and [Display Tokens in Decimal Form](/docs/tutorial/tokens/display-tokens-in-decimal-form)
+If you want to display the token in his decimal form (2000000000 to 2000.00) you can follow these tutorials: [Get Token Decimals](/docs/tutorial/tokens/get-token-decimals) and [Display Tokens in Decimal Form](/docs/tutorial/tokens/display-tokens-in-decimal-form)
 
 ### Getting available Pairs
 
-Since the beginning of this page, we only took the pair USDC - WETH as an example. But actually, the API supports more than 300000 pairs (all of the pairs
-currently available for trading and new pairs are automatically added to the API).
+Since the beginning of this page, we only took the pair USDC - WETH as an example. But the API supports more than 300000 pairs (and all new pairs are added when they are created).
 
 For example this API call:
 
@@ -254,14 +252,14 @@ If you want a guide on how to get the pairs, you can follow this tutorial: [Get 
 
 ### Blockchains
 
-[Blockchain APIs](https://www.blockchainapis.io) supports multiple blockchains. So, for every request that you make,
-you need to specify on which blockchain the call have to be made.
+[Blockchain APIs](https://www.blockchainapis.io) support many blockchains. So, for every request that you make,
+you need to specify the blockchain used.
 
-In order to get all of the supported blockchain, you can do this API call:
+To get all the supported blockchain, you can do this API call:
 
 https://api.blockchainapis.io/v0/blockchains/
 
-This API call will give you all of the supported blockchains with the ID that you can use for other
+This API call will give you all the supported blockchains with the ID that you can use for other
 API calls.
 
 Here is the result of the API call, the ID of the blockchain has been highlighted:
@@ -306,15 +304,15 @@ Here is the result of the API call, the ID of the blockchain has been highlighte
 ]
 ```
 
-For more informations, you can follow this tutorial: [Get Supported Blockchains](/docs/tutorial/blockchains/get-supported-blockchains)
+For more information, follow this tutorial: [Get Supported Blockchains](/docs/tutorial/blockchains/get-supported-blockchains)
 
 ### Exchanges
 
-[Blockchain APIs](https://www.blockchainapis.io) support multiple Decentralized Exchanges.
+[Blockchain APIs](https://www.blockchainapis.io) support many Decentralized Exchanges.
 
 As you saw in the previous calls, in the result, you got the id of the exchange.
 
-If you are willing to work on a specific exchange you can specify the ID of the exchange in your API call.
+If you are willing to work on a specific exchange, you can specify the ID of the exchange in your API call.
 
 The API call below will give you the list of available exchanges:
 
@@ -353,4 +351,4 @@ In the result below, we have highlighted the ID of the exchange that you can use
 }
 ```
 
-If you want to have more information, you can follow this tutorial: [Get Supported Exchanges](/docs/tutorial/blockchains/get-supported-exchanges)
+For more information, follow this tutorial: [Get Supported Exchanges](/docs/tutorial/blockchains/get-supported-exchanges)
