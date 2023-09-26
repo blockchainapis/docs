@@ -281,7 +281,7 @@ tutorial: <a href="/docs/tutorial/blockchains/get-supported-exchanges" target="_
 <Tabs groupId="programming-language" queryString>
 <TabItem value="python" label="Python">
 
-The <a href="/docs/python-sdk/blockchain-apis/amount-out-sync" target="_blank">amount_out</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model.
+The <a href="/docs/python-sdk/blockchain-apis-sync/amount-out" target="_blank">amount_out</a> method returns a List of <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model.
 
 Here is the structure of the <a href="/docs/python-sdk/models/amount-out" target="_blank">AmountOut</a> model:
 ```py
