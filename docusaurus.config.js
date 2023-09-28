@@ -68,7 +68,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/blockchain-apis-social-card.jpg',
+      image: 'img/blockchain-apis-social-card.png',
       navbar: {
         title: "Blockchain APIs",
         logo: {
